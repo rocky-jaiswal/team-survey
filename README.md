@@ -23,12 +23,11 @@
 
 __Models__:
 
-- User (id, email:text, admin:boolean, token:text, token_issue_datetime:datetime)
+- User (id, email:text, admin:boolean, short_token:text, short_token_issue_datetime:datetime)
 - Survey (id, active:boolean, start_date:date, end_date:date)
 - Question (id, survey_id, title, description, type, seqeuence_number)
 - Option (id, question_id, title)
 - Responses (id, user_id, survery_id, question_id, selected_option_id, response:text)
-- Approved_Users (emails)
 
 __Rules__:
 

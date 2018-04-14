@@ -1,17 +1,47 @@
-$main-dark: hsl(0, 0%, 24%);
 $main-white: hsl(0, 0%, 94%);
-$primary-blue: steelblue;
-$primary-green: seagreen;
+$main-dark:  hsl(0, 0%, 24%);
+$white:      #fff !default;
+$gray-100:   #f6f6f6 !default;
+$gray-200:   #f0f0f0 !default;
+$gray-300:   #dee2e6 !default;
+$gray-400:   #ced4da !default;
+$gray-500:   #adb5bd !default;
+$gray-600:   #999 !default;
+$gray-700:   #555 !default;
+$gray-800:   #333 !default;
+$gray-900:   #222 !default;
+$black:      #000 !default;
 
-$error-red: hsl(0, 84%, 50%);
-$success-green: hsl(138, 97%, 35%);
-$confirm-blue: hsl(203, 95%, 50%);
+$blue:    #158CBA !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #e83e8c !default;
+$red:     #FF4136 !default;
+$orange:  #fd7e14 !default;
+$yellow:  #FF851B !default;
+$green:   #55a757 !default;
+$teal:    #20c997 !default;
+$cyan:    #75CAEB !default;
 
-$main-gray: #888888;
-$light-gray: #e5e5e5;
+$primary:       $blue !default;
+$secondary:     $gray-200 !default;
+$success:       $green !default;
+$info:          $cyan !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $gray-100 !default;
+$dark:          $gray-700 !default;
+
+// Dimensions
 
 $app-radius: 2px;
 $vspace: 10px;
 $hspace: 10px;
 
-$main-font: 'Verdana', sans-serif;
+// Fonts
+
+$font-family-sans-serif:      "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$font-size-base:              1rem !default;
+$main-font:                   $font-family-sans-serif;
+
+

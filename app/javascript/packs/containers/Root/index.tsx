@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
 import { Dispatch, RootStateType } from '../../constants/types';
-import Layout from '../../components/Layout';
 import { loadInitialData } from '../../redux/app/actions';
+
+import Layout from '../../components/Layout';
+import LoginForm from '../../components/LoginForm';
 
 interface Props {
   loading: boolean;
@@ -41,7 +43,10 @@ export class Root extends React.Component<Props & DispatchProps> {
         email={''}
         loggedIn={false}
       >
-        <h1><FormattedMessage id="app.welcome" /></h1>
+        <div>
+          <h1><FormattedMessage id="app.welcome" /></h1>
+          <LoginForm />
+        </div>
       </Layout>
     );
   }
