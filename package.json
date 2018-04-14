@@ -1,0 +1,42 @@
+{
+  "name": "heartbeat-app",
+  "private": true,
+  "dependencies": {
+    "@rails/webpacker": "3.4",
+    "axios": "^0.17.1",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "react-intl": "^2.4.0",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^4.0.8",
+    "react-scripts-ts": "2.13.0",
+    "redux": "^3.7.2",
+    "redux-saga": "^0.16.0",
+    "seamless-immutable": "^7.1.2"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/enzyme": "^3.1.8",
+    "@types/jest": "^22.1.0",
+    "@types/node": "^9.3.0",
+    "@types/react": "^16.3.10",
+    "@types/react-dom": "^16.0.5",
+    "@types/react-intl": "^2.3.3",
+    "@types/react-redux": "^5.0.14",
+    "@types/react-router": "^4.0.21",
+    "@types/react-router-dom": "^4.2.3",
+    "@types/react-router-redux": "^5.0.11",
+    "@types/redux": "^3.6.0",
+    "@types/redux-saga": "^0.10.5",
+    "@types/seamless-immutable": "^7.1.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "tslint": "^5.9.1",
+    "tslint-react": "^3.5.1",
+    "ts-loader": "3.5.0",
+    "typescript": "^2.8.1",
+    "webpack-dev-server": "2.11.2"
+  }
+}
