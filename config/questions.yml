@@ -1,0 +1,42 @@
+---
+  questions:
+    - id: 1
+      sequence: 1
+      title: Q1
+      type: T1
+      options:
+        - a
+        - b
+        - c
+        - d
+    - id: 2
+      sequence: 2
+      title: Q2
+      type: T2
+      options:
+        - 1
+        - 2
+        - 3
+        - 4
+    - id: 3
+      sequence: 3
+      title: Q3
+      type: T2
+      options:
+        - 1
+        - 2
+        - 3
+        - 4
+    - id: 4
+      sequence: 4
+      title: Q4
+      type: T3
+      options:
+        - 1
+        - 2
+        - 3
+        - 4
+    - id: 5
+      sequence: 5
+      title: Q5
+      type: T4

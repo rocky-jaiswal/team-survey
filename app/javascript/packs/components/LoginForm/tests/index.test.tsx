@@ -7,9 +7,7 @@ describe('<LoginForm />', () => {
 
   test('displays without errors', () => {
     const wrapper = shallow(
-      <LoginForm
-        login={jest.fn()}
-      />
+      <LoginForm />
     );
     expect(wrapper.find('form').length).toEqual(1);
   });
