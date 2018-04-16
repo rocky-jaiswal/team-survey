@@ -25,6 +25,7 @@ const iState: AppStateType = {
   loggedIn: false,
   userEmail: null,
   userRole: 'user',
+  surveyId: null,
   questions: []
 };
 
@@ -82,7 +83,8 @@ const appReducer = (state = initialState, action: ActionType<any>): AppStateType
       return state
         .set('loading', false)
         .set('error', state.error === FETCH_QUESTIONS_FAILED ? null : state.error)
-        .set('questions', action.payload);
+        .set('surveyId', action.payload.survey_id)
+        .set('questions', action.payload.questions);
 
     case FETCH_USER_PROFILE_INPROGRESS:
       return state

@@ -14,7 +14,7 @@ export function* fetchQuestions() {
     yield put(fetchQuestionsInProgress());
 
     const result = yield call(API.fetchQuestions);
-    yield put(fetchQuestionsSuccess(result.data.questions));
+    yield put(fetchQuestionsSuccess(result.data));
   } catch (err) {
     // tslint:disable-next-line:no-console
     console.error(err);

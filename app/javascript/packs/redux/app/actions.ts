@@ -1,3 +1,5 @@
+import { QuestionType } from '../../constants/types';
+
 export const SET_USER_EMAIL            = 'app/SET_USER_EMAIL';
 
 export const GENERATE_TOKEN            = 'app/GENERATE_TOKEN';
@@ -90,7 +92,7 @@ export const fetchQuestionsInProgress = () => {
 };
 
 // tslint:disable-next-line:no-any
-export const fetchQuestionsSuccess = (payload: any) => {
+export const fetchQuestionsSuccess = (payload: QuestionType[]) => {
   return {
     payload,
     type: FETCH_QUESTIONS_SUCCESS

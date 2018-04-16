@@ -1,4 +1,5 @@
 ---
+  survey_id: 1
   questions:
     - id: 1
       sequence: 1
