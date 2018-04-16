@@ -5,9 +5,9 @@ class ApplicationController < ActionController::Base
 
   def requires_valid_token
     auth_token = request.headers['Authorization']
-    decoded = WebToken.decode(auth_token.split(' ')[1])
-    User.find(decoded[0]['id'])
-  rescue => _e
+    decoded = WebToken.decode(auth_token)
+    @user = User.find(decoded[0]['id'])
+  rescue Exception => _e
     render json: {}, status: 401
   end
 end

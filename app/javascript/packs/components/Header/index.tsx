@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 interface Props {
-  email?: string;
+  email?: string | null;
   loggedIn?: boolean;
 }
 

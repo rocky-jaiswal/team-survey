@@ -4,7 +4,7 @@ import Header from '../Header';
 import Footer from '../Footer';
 
 interface Props {
-  email?: string;
+  email?: string | null;
   loggedIn?: boolean;
   children?: React.ReactElement<{}>;
 }

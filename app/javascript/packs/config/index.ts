@@ -2,13 +2,11 @@ const environmentConfiguration = (environment: string) => {
 
   if (environment === 'development') {
     return {
-      baseURL: `http://${window.location.hostname}:3001`,
-      callbackURL : `http://${window.location.hostname}:3000/authCallback`
+      baseURL: `http://${window.location.hostname}:3000/api`
     };
   }
   return {
-    baseURL: `https://${window.location.hostname}/api`,
-    callbackURL: `https://${window.location.hostname}/authCallback`
+    baseURL: `https://${window.location.hostname}/api`
   };
 };
 

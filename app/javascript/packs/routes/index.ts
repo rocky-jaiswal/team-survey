@@ -1,5 +1,6 @@
 import Root from '../containers/Root';
 import Session from '../containers/Session';
+import Survey from '../containers/Survey';
 
 interface RouteDefinition {
   sequence: number;
@@ -24,6 +25,12 @@ const routes: Routes = {
     component: Session,
     exact: true,
     path: '/session/:token'
+  },
+  survey: {
+    sequence: 3,
+    component: Survey,
+    exact: true,
+    path: '/survey'
   }
 };
 

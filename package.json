@@ -33,9 +33,9 @@
     "@types/seamless-immutable": "^7.1.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "ts-loader": "3.5.0",
     "tslint": "^5.9.1",
     "tslint-react": "^3.5.1",
-    "ts-loader": "3.5.0",
     "typescript": "^2.8.1",
     "webpack-dev-server": "2.11.2"
   }

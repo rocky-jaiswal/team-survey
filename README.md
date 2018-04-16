@@ -6,20 +6,19 @@
 
 ```docker run -it --rm --link heartbeat-postgres:postgres postgres:10-alpine psql -h postgres -U postgres```
 
-```./bin/webpack-dev-server```
+```bin/webpack-dev-server```
 
-```bundle exec rails s```
+```bin/rails s```
 
 ## How it works -
 
 1. User gives email
-2. Email sent with link with short term token (only for approved users)
-3. With link, JWT issued for 12 hours
-4. User fills active survey
-5. Admin can create surveys, questions and options, view aggregated responses
+2. Email sent with link which includes a short term login token (only for approved users)
+3. With link cliked, JWT is issued for 12 hours
+4. User fills active survey, one question at a time
+5. Admin can create surveys, questions and options (currently in YAML), view aggregated responses
 6. Admin can add / remove approved users
-7. Admin can trigger emails
-
+7. Admin can trigger emails (e.g. invitations)
 
 __Models__:
 

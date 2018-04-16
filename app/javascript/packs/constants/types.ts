@@ -3,6 +3,13 @@ import { Dispatch as ReduxDispatch } from 'redux';
 interface AppState {
   loading: boolean;
   locale: string;
+  error: string | null;
+  tokenGenerated: boolean;
+  loggedIn: boolean;
+  userEmail: string | null;
+  userRole: 'admin' | 'user';
+  // tslint:disable-next-line:no-any
+  questions: any[];
 }
 
 export type AppStateType = AppState;

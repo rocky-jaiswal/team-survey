@@ -4,7 +4,7 @@ class WebToken
 
   def self.create(user)
     return nil if user.nil?
-    exp = Time.now.to_i + (10) # One month exp. time
+    exp = Time.now.to_i + (30 * 24 * 3600) # One month exp. time
     payload = { id: user.id, exp: exp }
     JWT.encode payload, HMAC_SECRET, 'HS256'
   end
