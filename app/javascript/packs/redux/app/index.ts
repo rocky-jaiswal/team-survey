@@ -30,7 +30,7 @@ const iState: AppStateType = {
   userRole: 'user',
   surveyId: null,
   questions: [],
-  visibleQuestionSequence: null,
+  visibleQuestionSequence: 1,
   responses: []
 };
 

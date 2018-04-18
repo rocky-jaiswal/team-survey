@@ -5,20 +5,32 @@ import Question from '../Question';
 
 interface Props {
   questions: QuestionType[];
-  visibleQuestionSequence: number | null;
+  responses: ResponseType[];
+  visibleQuestionSequence: number;
   setQuestionSequence(payload: number): {};
   setResponse(payload: ResponseType): {};
 }
 
 const QuestionsWrapper = (props: Props) => {
+  const hasValidResponse = () => {
+    const activeQuestion = props.questions.find((q) => q.sequence === props.visibleQuestionSequence)
+      || props.questions[0];
+    const currentResponse = props.responses.find((r) => r.questionId === activeQuestion.id);
+    if (activeQuestion && activeQuestion.responseRequired &&
+      (!currentResponse || !currentResponse.selection || currentResponse.selection.length === 0)) {
+        return false;
+    }
+    return true;
+  };
+
   const prevQuestion = () => {
-    if (props.visibleQuestionSequence && props.visibleQuestionSequence !== 1) {
+    if (hasValidResponse() && props.visibleQuestionSequence !== 1) {
       props.setQuestionSequence(props.visibleQuestionSequence - 1);
     }
   };
 
   const nextQuestion = () => {
-    if (props.visibleQuestionSequence && props.visibleQuestionSequence < props.questions.length) {
+    if (hasValidResponse() && props.visibleQuestionSequence < props.questions.length) {
       props.setQuestionSequence(props.visibleQuestionSequence + 1);
     }
   };
@@ -30,16 +42,17 @@ const QuestionsWrapper = (props: Props) => {
         <Question
           key={question.id}
           question={question}
+          response={props.responses.find((r) => r.questionId === question.id)}
           visibleQuestionSequence={props.visibleQuestionSequence}
           setResponse={props.setResponse}
         />
       )}
       <div className="navigation">
-        <button className="btn btn-default" onClick={prevQuestion}>Back</button>
-        <button className="btn btn-success" onClick={nextQuestion}>Next</button>
+        <button className="btn btn-default" disabled={!hasValidResponse()} onClick={prevQuestion}>Back</button>
+        <button className="btn btn-success" disabled={!hasValidResponse()} onClick={nextQuestion}>Next</button>
       </div>
     </div>
   );
-}
+};
 
 export default QuestionsWrapper;

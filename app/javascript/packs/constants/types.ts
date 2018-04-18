@@ -13,7 +13,7 @@ export type QuestionType = Question;
 
 interface Response {
   questionId: number;
-  selection: string[];
+  selection: string | string[];
   added?: boolean;
 }
 
@@ -29,7 +29,7 @@ interface AppState {
   userRole: 'admin' | 'user';
   surveyId: number | null;
   questions: Question[];
-  visibleQuestionSequence: number | null;
+  visibleQuestionSequence: number;
   responses: Response[];
 }
 

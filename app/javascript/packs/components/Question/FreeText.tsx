@@ -9,7 +9,6 @@ interface Props {
 const FreeText = (props: Props) => {
   return (
     <div className="text-choice-question-wrapper">
-      <h2>{props.question.title}</h2>
       <form>
         <div className="form-range">
           <textarea

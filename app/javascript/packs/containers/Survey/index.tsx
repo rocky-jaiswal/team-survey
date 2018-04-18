@@ -18,7 +18,8 @@ interface Props {
   loggedIn: boolean;
   userEmail: string | null;
   questions: QuestionType[];
-  visibleQuestionSequence: number | null;
+  visibleQuestionSequence: number;
+  responses: ResponseType[];
 }
 
 interface DispatchProps {
@@ -35,7 +36,8 @@ const mapStateToProps = (state: RootStateType, ownProps: {}): Props => {
     loggedIn: state.app.loggedIn,
     userEmail: state.app.userEmail,
     questions: state.app.questions,
-    visibleQuestionSequence: state.app.visibleQuestionSequence
+    visibleQuestionSequence: state.app.visibleQuestionSequence,
+    responses: state.app.responses
   };
 };
 
@@ -69,6 +71,7 @@ export class Survey extends React.Component<Props & DispatchProps> {
         <div className="main-survey">
           <QuestionsWrapper
             questions={this.props.questions}
+            responses={this.props.responses}
             visibleQuestionSequence={this.props.visibleQuestionSequence}
             setQuestionSequence={this.props.setQuestionSequence}
             setResponse={this.props.setResponse}

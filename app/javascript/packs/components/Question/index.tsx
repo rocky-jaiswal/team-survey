@@ -8,7 +8,8 @@ import FreeText from './FreeText';
 
 interface Props {
   question: QuestionType;
-  visibleQuestionSequence: number | null;
+  response?: ResponseType;
+  visibleQuestionSequence: number;
   setResponse(payload: ResponseType): {};
 }
 
@@ -21,7 +22,7 @@ const Question = (props: Props) => {
       return <SingleChoice question={question} setResponse={props.setResponse} />;
     }
     if (question.type === 'RANGE') {
-      return <RangeChoice question={question} setResponse={props.setResponse} />;
+      return <RangeChoice question={question} setResponse={props.setResponse} response={props.response} />;
     }
     if (question.type === 'TEXT') {
       return <FreeText question={question} setResponse={props.setResponse} />;
@@ -35,6 +36,7 @@ const Question = (props: Props) => {
         'question-wrapper' :
         'hidden'}
     >
+      <h2>{`${props.question.title} ${props.question.responseRequired ? '*' : ''}`}</h2>
       {renderAppropriateQuestion(props.question)}
     </div>
   );

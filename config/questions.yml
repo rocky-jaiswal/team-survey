@@ -3,7 +3,7 @@
   questions:
     - id: 1
       sequence: 1
-      title: In general, how have you been feeling this week? *
+      title: In general, how have you been feeling this week?
       type: MULTI
       responseRequired: true
       options:

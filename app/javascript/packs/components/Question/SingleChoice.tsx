@@ -8,7 +8,6 @@ interface Props {
 
 const SingleChoice = (props: Props) => (
   <div className="single-choice-question-wrapper">
-    <h2>{props.question.title}</h2>
     <form>
       <div className="form-check">
         {props.question.options.map((option, index) => (
