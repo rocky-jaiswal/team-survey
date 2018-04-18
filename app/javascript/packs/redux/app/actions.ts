@@ -22,6 +22,11 @@ export const FETCH_USER_PROFILE_INPROGRESS = 'app/FETCH_USER_PROFILE_INPROGRESS'
 export const FETCH_USER_PROFILE_SUCCESS    = 'app/FETCH_USER_PROFILE_SUCCESS';
 export const FETCH_USER_PROFILE_FAILED     = 'app/FETCH_USER_PROFILE_FAILED';
 
+export const SUBMIT_SURVEY            = 'app/SUBMIT_SURVEY';
+export const SUBMIT_SURVEY_INPROGRESS = 'app/SUBMIT_SURVEY_INPROGRESS';
+export const SUBMIT_SURVEY_SUCCESS    = 'app/SUBMIT_SURVEY_SUCCESS';
+export const SUBMIT_SURVEY_FAILED     = 'app/SUBMIT_SURVEY_FAILED';
+
 export const SET_QUESTION_SEQUENCE = 'app/SET_QUESTION_SEQUENCE';
 export const SET_RESPONSE = 'app/SET_RESPONSE';
 
@@ -145,5 +150,29 @@ export const setResponse = (payload: ResponseType) => {
   return {
     payload,
     type: SET_RESPONSE
+  };
+};
+
+export const submitSurvey = () => {
+  return {
+    type: SUBMIT_SURVEY
+  };
+};
+
+export const submitSurveyInProgress = () => {
+  return {
+    type: SUBMIT_SURVEY_INPROGRESS
+  };
+};
+
+export const submitSurveySuccess = () => {
+  return {
+    type: SUBMIT_SURVEY_SUCCESS
+  };
+};
+
+export const submitSurveyFailed = () => {
+  return {
+    type: SUBMIT_SURVEY_FAILED
   };
 };

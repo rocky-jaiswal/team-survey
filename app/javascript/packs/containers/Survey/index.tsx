@@ -9,7 +9,8 @@ import {
   fetchQuestions,
   fetchUserProfile,
   setQuestionSequence,
-  setResponse
+  setResponse,
+  submitSurvey
 } from '../../redux/app/actions';
 import QuestionsWrapper from '../../components/QuestionsWrapper';
 
@@ -20,6 +21,7 @@ interface Props {
   questions: QuestionType[];
   visibleQuestionSequence: number;
   responses: ResponseType[];
+  allResponsesValid: boolean;
 }
 
 interface DispatchProps {
@@ -28,6 +30,7 @@ interface DispatchProps {
   fetchUserProfile(): {};
   setQuestionSequence(payload: number): {};
   setResponse(payload: ResponseType): {};
+  submitSurvey(): {};
 }
 
 const mapStateToProps = (state: RootStateType, ownProps: {}): Props => {
@@ -37,7 +40,8 @@ const mapStateToProps = (state: RootStateType, ownProps: {}): Props => {
     userEmail: state.app.userEmail,
     questions: state.app.questions,
     visibleQuestionSequence: state.app.visibleQuestionSequence,
-    responses: state.app.responses
+    responses: state.app.responses,
+    allResponsesValid: state.app.allResponsesValid
   };
 };
 
@@ -47,7 +51,8 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
     fetchQuestions: () => dispatch(fetchQuestions()),
     fetchUserProfile: () => dispatch(fetchUserProfile()),
     setQuestionSequence: (payload: number) => dispatch(setQuestionSequence(payload)),
-    setResponse: (payload: ResponseType) => dispatch(setResponse(payload))
+    setResponse: (payload: ResponseType) => dispatch(setResponse(payload)),
+    submitSurvey: () => dispatch(submitSurvey()),
   };
 };
 
@@ -73,8 +78,10 @@ export class Survey extends React.Component<Props & DispatchProps> {
             questions={this.props.questions}
             responses={this.props.responses}
             visibleQuestionSequence={this.props.visibleQuestionSequence}
+            allResponsesValid={this.props.allResponsesValid}
             setQuestionSequence={this.props.setQuestionSequence}
             setResponse={this.props.setResponse}
+            submitSurvey={this.props.submitSurvey}
           />
         </div>
       </Layout>

@@ -31,6 +31,8 @@ interface AppState {
   questions: Question[];
   visibleQuestionSequence: number;
   responses: Response[];
+  allResponsesValid: boolean;
+  surveySubmitted: boolean;
 }
 
 export type AppStateType = AppState;

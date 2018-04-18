@@ -16,9 +16,12 @@ import {
   FETCH_USER_PROFILE_FAILED,
   FETCH_USER_PROFILE_SUCCESS,
   SET_QUESTION_SEQUENCE,
-  SET_RESPONSE
+  SET_RESPONSE,
+  SUBMIT_SURVEY_FAILED,
+  SUBMIT_SURVEY_INPROGRESS,
+  SUBMIT_SURVEY_SUCCESS
 } from './actions';
-import { setResponse } from './validateAndSetResponse';
+import { setResponse, checkValidity } from './validateAndSetResponse';
 
 const iState: AppStateType = {
   locale: 'en',
@@ -31,7 +34,9 @@ const iState: AppStateType = {
   surveyId: null,
   questions: [],
   visibleQuestionSequence: 1,
-  responses: []
+  responses: [],
+  allResponsesValid: false,
+  surveySubmitted: false
 };
 
 export const initialState = Immutable.from(iState);
@@ -113,8 +118,25 @@ const appReducer = (state = initialState, action: ActionType<any>): AppStateType
         .set('visibleQuestionSequence', action.payload);
 
     case SET_RESPONSE:
+      const updatedResponses = setResponse(state.questions, state.responses, action.payload);
       return state
-        .set('responses', setResponse(state.questions, state.responses, action.payload));
+        .set('responses', updatedResponses)
+        .set('allResponsesValid', checkValidity(state.questions, updatedResponses));
+
+    case SUBMIT_SURVEY_INPROGRESS:
+      return state
+        .set('loading', true);
+
+    case SUBMIT_SURVEY_FAILED:
+      return state
+        .set('loading', false)
+        .set('error', GENERATE_TOKEN_FAILED);
+
+    case SUBMIT_SURVEY_SUCCESS:
+      return state
+        .set('loading', false)
+        .set('error', state.error === SUBMIT_SURVEY_FAILED ? null : state.error)
+        .set('surveySubmitted', true);
 
     default:
       return state;

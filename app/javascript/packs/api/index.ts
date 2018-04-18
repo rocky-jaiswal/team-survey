@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import Config from '../config';
+import { ResponseType } from '../constants/types';
 
 const AppAPI = {
 
@@ -33,6 +34,11 @@ const AppAPI = {
     return AppAPI.init()
       .get(Config.env.baseURL + '/user_profile');
   },
+
+  async submitSurvey(surveyId: number, responses: ResponseType[]) {
+    return AppAPI.init()
+      .post(`${Config.env.baseURL}/survey/${surveyId}/responses`, { responses });
+  }
 
 };
 

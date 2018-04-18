@@ -7,8 +7,10 @@ interface Props {
   questions: QuestionType[];
   responses: ResponseType[];
   visibleQuestionSequence: number;
+  allResponsesValid: boolean;
   setQuestionSequence(payload: number): {};
   setResponse(payload: ResponseType): {};
+  submitSurvey(): {};
 }
 
 const QuestionsWrapper = (props: Props) => {
@@ -49,7 +51,14 @@ const QuestionsWrapper = (props: Props) => {
       )}
       <div className="navigation">
         <button className="btn btn-default" disabled={!hasValidResponse()} onClick={prevQuestion}>Back</button>
-        <button className="btn btn-success" disabled={!hasValidResponse()} onClick={nextQuestion}>Next</button>
+        <button
+          className={props.allResponsesValid ? 'btn btn-success' : 'hidden'}
+          disabled={!props.allResponsesValid}
+          onClick={() => props.submitSurvey()}
+        >
+          Submit
+        </button>
+        <button className="btn btn-primary" disabled={!hasValidResponse()} onClick={nextQuestion}>Next</button>
       </div>
     </div>
   );
