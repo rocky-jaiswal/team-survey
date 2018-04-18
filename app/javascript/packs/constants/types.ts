@@ -4,11 +4,20 @@ interface Question {
   id: number;
   sequence: number;
   title: string;
-  type: string;
+  type: 'MULTI' | 'RADIO' | 'RANGE' | 'TEXT';
   options: string[];
+  responseRequired: boolean;
 }
 
 export type QuestionType = Question;
+
+interface Response {
+  questionId: number;
+  selection: string[];
+  added?: boolean;
+}
+
+export type ResponseType = Response;
 
 interface AppState {
   loading: boolean;
@@ -20,6 +29,8 @@ interface AppState {
   userRole: 'admin' | 'user';
   surveyId: number | null;
   questions: Question[];
+  visibleQuestionSequence: number | null;
+  responses: Response[];
 }
 
 export type AppStateType = AppState;

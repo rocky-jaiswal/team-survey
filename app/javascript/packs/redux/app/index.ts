@@ -1,6 +1,6 @@
 import * as Immutable from 'seamless-immutable';
 
-import { ActionType, AppStateType } from '../../constants/types';
+import { ActionType, AppStateType, QuestionType } from '../../constants/types';
 import {
   SET_USER_EMAIL,
   GENERATE_TOKEN_INPROGRESS,
@@ -14,8 +14,11 @@ import {
   FETCH_QUESTIONS_SUCCESS,
   FETCH_USER_PROFILE_INPROGRESS,
   FETCH_USER_PROFILE_FAILED,
-  FETCH_USER_PROFILE_SUCCESS
+  FETCH_USER_PROFILE_SUCCESS,
+  SET_QUESTION_SEQUENCE,
+  SET_RESPONSE
 } from './actions';
+import { setResponse } from './validateAndSetResponse';
 
 const iState: AppStateType = {
   locale: 'en',
@@ -26,7 +29,9 @@ const iState: AppStateType = {
   userEmail: null,
   userRole: 'user',
   surveyId: null,
-  questions: []
+  questions: [],
+  visibleQuestionSequence: null,
+  responses: []
 };
 
 export const initialState = Immutable.from(iState);
@@ -84,7 +89,8 @@ const appReducer = (state = initialState, action: ActionType<any>): AppStateType
         .set('loading', false)
         .set('error', state.error === FETCH_QUESTIONS_FAILED ? null : state.error)
         .set('surveyId', action.payload.survey_id)
-        .set('questions', action.payload.questions);
+        .set('questions', action.payload.questions)
+        .set('visibleQuestionSequence', Math.min(...action.payload.questions.map((q: QuestionType) => q.sequence)));
 
     case FETCH_USER_PROFILE_INPROGRESS:
       return state
@@ -101,6 +107,14 @@ const appReducer = (state = initialState, action: ActionType<any>): AppStateType
         .set('error', state.error === FETCH_USER_PROFILE_FAILED ? null : state.error)
         .set('userEmail', action.payload.email)
         .set('userRole', action.payload.admin ? 'admin' : 'user');
+
+    case SET_QUESTION_SEQUENCE:
+      return state
+        .set('visibleQuestionSequence', action.payload);
+
+    case SET_RESPONSE:
+      return state
+        .set('responses', setResponse(state.questions, state.responses, action.payload));
 
     default:
       return state;

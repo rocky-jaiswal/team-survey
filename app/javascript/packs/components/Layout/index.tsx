@@ -19,9 +19,7 @@ class Layout extends React.PureComponent<Props> {
           loggedIn={this.props.loggedIn}
         />
         <div id="page">
-          <div className="main">
-            {React.Children.toArray(this.props.children)}
-          </div>
+          {React.Children.toArray(this.props.children)}
         </div>
         <Footer />
       </div>

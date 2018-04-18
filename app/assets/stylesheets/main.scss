@@ -1,6 +1,7 @@
 @import '_variables';
 @import '_bootstrap';
 @import '_root';
+@import '_survey';
 
 body {
   margin: 0;
@@ -42,4 +43,9 @@ h1, h2, h3, h4, h5 {
 #footer {
   height: 2%;
   background-color: $green;
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
 }

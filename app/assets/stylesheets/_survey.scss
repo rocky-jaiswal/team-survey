@@ -1,0 +1,66 @@
+@import '_variables';
+
+.main-survey {
+  display: flex;
+  height: 100%;
+}
+
+.questions-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  padding: 2 * $vspace;
+  border: 1px solid $gray-600;
+
+  h2 {
+    width: 100%;
+    margin-bottom: 2 * $vspace;
+  }
+
+  p {
+    margin: 0 5px 5px 0;
+    background-color: $gray-700;
+    color: $gray-200;
+    font-style: italic;
+    padding: $vspace;
+  }
+
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2 * $vspace;
+    background-color: $gray-500;
+    padding: $vspace / 2;
+  }
+}
+
+.question-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  button[type='submit'] {
+    margin-top: 2 * $vspace;
+  }
+
+  .multiple-choice-question-wrapper,
+  .single-choice-question-wrapper {
+    width: 100%;
+
+    input {
+      margin-right: $hspace;
+    }
+
+    .form-option {
+      margin: $vspace 0;
+    }
+  }
+
+  .range-choice-question-wrapper {
+    .form-range {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

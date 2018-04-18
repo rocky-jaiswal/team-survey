@@ -1,4 +1,4 @@
-import { QuestionType } from '../../constants/types';
+import { QuestionType, ResponseType } from '../../constants/types';
 
 export const SET_USER_EMAIL            = 'app/SET_USER_EMAIL';
 
@@ -21,6 +21,9 @@ export const FETCH_USER_PROFILE            = 'app/FETCH_USER_PROFILE';
 export const FETCH_USER_PROFILE_INPROGRESS = 'app/FETCH_USER_PROFILE_INPROGRESS';
 export const FETCH_USER_PROFILE_SUCCESS    = 'app/FETCH_USER_PROFILE_SUCCESS';
 export const FETCH_USER_PROFILE_FAILED     = 'app/FETCH_USER_PROFILE_FAILED';
+
+export const SET_QUESTION_SEQUENCE = 'app/SET_QUESTION_SEQUENCE';
+export const SET_RESPONSE = 'app/SET_RESPONSE';
 
 export const setUserEmail = (payload: string) => {
   return {
@@ -128,5 +131,19 @@ export const fetchUserProfileSuccess = (payload: any) => {
 export const fetchUserProfileFailed = () => {
   return {
     type: FETCH_QUESTIONS_FAILED
+  };
+};
+
+export const setQuestionSequence = (payload: number) => {
+  return {
+    payload,
+    type: SET_QUESTION_SEQUENCE
+  };
+};
+
+export const setResponse = (payload: ResponseType) => {
+  return {
+    payload,
+    type: SET_RESPONSE
   };
 };

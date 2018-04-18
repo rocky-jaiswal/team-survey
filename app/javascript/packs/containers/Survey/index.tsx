@@ -2,28 +2,40 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
-import { Dispatch, RootStateType } from '../../constants/types';
+import { Dispatch, RootStateType, QuestionType, ResponseType } from '../../constants/types';
 
 import Layout from '../../components/Layout';
-import { fetchQuestions, fetchUserProfile } from '../../redux/app/actions';
+import {
+  fetchQuestions,
+  fetchUserProfile,
+  setQuestionSequence,
+  setResponse
+} from '../../redux/app/actions';
+import QuestionsWrapper from '../../components/QuestionsWrapper';
 
 interface Props {
   loading: boolean;
   loggedIn: boolean;
   userEmail: string | null;
+  questions: QuestionType[];
+  visibleQuestionSequence: number | null;
 }
 
 interface DispatchProps {
   changeRoute(route: string): {};
   fetchQuestions(): {};
   fetchUserProfile(): {};
+  setQuestionSequence(payload: number): {};
+  setResponse(payload: ResponseType): {};
 }
 
 const mapStateToProps = (state: RootStateType, ownProps: {}): Props => {
   return {
     loading: state.app.loading,
     loggedIn: state.app.loggedIn,
-    userEmail: state.app.userEmail
+    userEmail: state.app.userEmail,
+    questions: state.app.questions,
+    visibleQuestionSequence: state.app.visibleQuestionSequence
   };
 };
 
@@ -31,7 +43,9 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
   return {
     changeRoute: (payload: string) => dispatch(push(payload)),
     fetchQuestions: () => dispatch(fetchQuestions()),
-    fetchUserProfile: () => dispatch(fetchUserProfile())
+    fetchUserProfile: () => dispatch(fetchUserProfile()),
+    setQuestionSequence: (payload: number) => dispatch(setQuestionSequence(payload)),
+    setResponse: (payload: ResponseType) => dispatch(setResponse(payload))
   };
 };
 
@@ -52,8 +66,13 @@ export class Survey extends React.Component<Props & DispatchProps> {
         email={this.props.userEmail}
         loggedIn={this.props.loggedIn}
       >
-        <div>
-          <h1>Welcome to the weekly survey ...</h1>
+        <div className="main-survey">
+          <QuestionsWrapper
+            questions={this.props.questions}
+            visibleQuestionSequence={this.props.visibleQuestionSequence}
+            setQuestionSequence={this.props.setQuestionSequence}
+            setResponse={this.props.setResponse}
+          />
         </div>
       </Layout>
     );
