@@ -15,25 +15,20 @@ const Header = (props: Props) => {
       return <span />;
     }
     return (
-      <div className="admin-menu">
-        <p>Admin</p>
-        <ul>
-          <li><Link to="/users">Manage Users</Link></li>
-          <li><Link to="/surveys">Manage Surveys</Link></li>
-          <li><Link to="/results">View Responses</Link></li>
-        </ul>
-      </div>
+      <Link to="/admin">Admin</Link>
     );
   };
 
   return (
     <div id="header">
-      <p>{props.loggedIn ? `Hello, ${props.email} | ` : ''}</p>
-      {adminMenu()}
-      {props.loggedIn
-        ? <button className="btn btn-link" onClick={() => props.logout && props.logout()}>Logout</button>
-        : <span />
-      }
+      <p>{props.loggedIn ? `Hello, ${props.email}` : ''}</p>
+      <div>
+        {adminMenu()}
+        {props.loggedIn
+          ? <button className="btn btn-link" onClick={() => props.logout && props.logout()}>Logout</button>
+          : <span />
+        }
+      </div>
     </div>
   );
 };

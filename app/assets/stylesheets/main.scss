@@ -2,6 +2,7 @@
 @import '_bootstrap';
 @import '_root';
 @import '_survey';
+@import '_admin';
 
 body {
   margin: 0;
@@ -30,7 +31,7 @@ h1, h2, h3, h4, h5 {
 
 #header {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   height: 5%;
   background-color: $primary;
@@ -48,6 +49,10 @@ h1, h2, h3, h4, h5 {
     background-color: $gray-200;
     color: $red;
   }
+
+  .header-actions a {
+    margin-right: 2 * $hspace;
+  }
 }
 
 #page {
@@ -64,13 +69,6 @@ h1, h2, h3, h4, h5 {
 
 button.btn {
   border-radius: 0px;
-}
-
-.admin-menu {
-
-  ul li {
-    list-style: none;
-  }
 }
 
 .hidden {
