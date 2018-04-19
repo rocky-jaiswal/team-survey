@@ -35,9 +35,9 @@ const AppAPI = {
       .get(Config.env.baseURL + '/user_profile');
   },
 
-  async submitSurvey(surveyId: number, responses: ResponseType[]) {
+  async submitSurvey(surveyId: number, response: ResponseType[]) {
     return AppAPI.init()
-      .post(`${Config.env.baseURL}/survey/${surveyId}/responses`, { responses });
+      .post(`${Config.env.baseURL}/surveys/${surveyId}/responses`, { response });
   }
 
 };

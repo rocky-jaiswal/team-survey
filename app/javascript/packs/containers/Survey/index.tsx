@@ -13,6 +13,7 @@ import {
   submitSurvey
 } from '../../redux/app/actions';
 import QuestionsWrapper from '../../components/QuestionsWrapper';
+import Message from '../../components/Message';
 
 interface Props {
   loading: boolean;
@@ -22,6 +23,7 @@ interface Props {
   visibleQuestionSequence: number;
   responses: ResponseType[];
   allResponsesValid: boolean;
+  surveySubmitted: boolean;
 }
 
 interface DispatchProps {
@@ -41,7 +43,8 @@ const mapStateToProps = (state: RootStateType, ownProps: {}): Props => {
     questions: state.app.questions,
     visibleQuestionSequence: state.app.visibleQuestionSequence,
     responses: state.app.responses,
-    allResponsesValid: state.app.allResponsesValid
+    allResponsesValid: state.app.allResponsesValid,
+    surveySubmitted: state.app.surveySubmitted
   };
 };
 
@@ -67,6 +70,25 @@ export class Survey extends React.Component<Props & DispatchProps> {
     }
   }
 
+  renderQuestions() {
+    if (this.props.surveySubmitted
+      || !this.props.questions
+      || this.props.questions.length === 0) {
+      return <Message type="completion" />;
+    }
+    return (
+      <QuestionsWrapper
+        questions={this.props.questions}
+        responses={this.props.responses}
+        visibleQuestionSequence={this.props.visibleQuestionSequence}
+        allResponsesValid={this.props.allResponsesValid}
+        setQuestionSequence={this.props.setQuestionSequence}
+        setResponse={this.props.setResponse}
+        submitSurvey={this.props.submitSurvey}
+      />
+    );
+  }
+
   render() {
     return (
       <Layout
@@ -74,15 +96,7 @@ export class Survey extends React.Component<Props & DispatchProps> {
         loggedIn={this.props.loggedIn}
       >
         <div className="main-survey">
-          <QuestionsWrapper
-            questions={this.props.questions}
-            responses={this.props.responses}
-            visibleQuestionSequence={this.props.visibleQuestionSequence}
-            allResponsesValid={this.props.allResponsesValid}
-            setQuestionSequence={this.props.setQuestionSequence}
-            setResponse={this.props.setResponse}
-            submitSurvey={this.props.submitSurvey}
-          />
+          {this.renderQuestions()}
         </div>
       </Layout>
     );

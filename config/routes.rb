@@ -8,5 +8,8 @@ Rails.application.routes.draw do
     resource :user_profile, only: [:show]
     resources :users
     resources :questions
+    resources :surveys do
+      resources :responses, only: [:create, :index]
+    end
   end
 end
