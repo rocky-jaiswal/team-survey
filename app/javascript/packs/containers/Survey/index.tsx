@@ -10,7 +10,8 @@ import {
   fetchUserProfile,
   setQuestionSequence,
   setResponse,
-  submitSurvey
+  submitSurvey,
+  logout
 } from '../../redux/app/actions';
 import QuestionsWrapper from '../../components/QuestionsWrapper';
 import Message from '../../components/Message';
@@ -19,6 +20,7 @@ interface Props {
   loading: boolean;
   loggedIn: boolean;
   userEmail: string | null;
+  userRole: string;
   questions: QuestionType[];
   visibleQuestionSequence: number;
   responses: ResponseType[];
@@ -33,6 +35,7 @@ interface DispatchProps {
   setQuestionSequence(payload: number): {};
   setResponse(payload: ResponseType): {};
   submitSurvey(): {};
+  logout(): {};
 }
 
 const mapStateToProps = (state: RootStateType, ownProps: {}): Props => {
@@ -40,6 +43,7 @@ const mapStateToProps = (state: RootStateType, ownProps: {}): Props => {
     loading: state.app.loading,
     loggedIn: state.app.loggedIn,
     userEmail: state.app.userEmail,
+    userRole: state.app.userRole,
     questions: state.app.questions,
     visibleQuestionSequence: state.app.visibleQuestionSequence,
     responses: state.app.responses,
@@ -56,6 +60,7 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
     setQuestionSequence: (payload: number) => dispatch(setQuestionSequence(payload)),
     setResponse: (payload: ResponseType) => dispatch(setResponse(payload)),
     submitSurvey: () => dispatch(submitSurvey()),
+    logout: () => dispatch(logout())
   };
 };
 
@@ -67,6 +72,12 @@ export class Survey extends React.Component<Props & DispatchProps> {
     } else {
       this.props.fetchQuestions();
       this.props.fetchUserProfile();
+    }
+  }
+
+  componentWillReceiveProps(nextProps: Props) {
+    if (!sessionStorage.getItem('jwt') && !nextProps.loggedIn) {
+      this.props.changeRoute('/');
     }
   }
 
@@ -93,7 +104,9 @@ export class Survey extends React.Component<Props & DispatchProps> {
     return (
       <Layout
         email={this.props.userEmail}
+        userRole={this.props.userRole}
         loggedIn={this.props.loggedIn}
+        logout={this.props.logout}
       >
         <div className="main-survey">
           {this.renderQuestions()}

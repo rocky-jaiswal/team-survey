@@ -30,6 +30,8 @@ export const SUBMIT_SURVEY_FAILED     = 'app/SUBMIT_SURVEY_FAILED';
 export const SET_QUESTION_SEQUENCE = 'app/SET_QUESTION_SEQUENCE';
 export const SET_RESPONSE = 'app/SET_RESPONSE';
 
+export const LOGOUT = 'app/LOGOUT';
+
 export const setUserEmail = (payload: string) => {
   return {
     payload,
@@ -174,5 +176,11 @@ export const submitSurveySuccess = () => {
 export const submitSurveyFailed = () => {
   return {
     type: SUBMIT_SURVEY_FAILED
+  };
+};
+
+export const logout = () => {
+  return {
+    type: LOGOUT
   };
 };

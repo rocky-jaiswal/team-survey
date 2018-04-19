@@ -2,8 +2,10 @@ class ResponsesController < ApplicationController
   before_action :requires_valid_token
 
   def create
-    allResponses = Response.build_bulk(params[:survey_id].to_i, @user.id, responses)
+    survey_id = params[:survey_id].to_i
+    allResponses = Response.build_bulk(survey_id, responses)
     Response.create!(allResponses)
+    Survey.add_respondent(survey_id, @user.id)
     render json: {}
   rescue => e
     render json: {}, status: 500
@@ -13,7 +15,6 @@ class ResponsesController < ApplicationController
 
   def responses
     params.permit(response: [])
-    params.permit(:survey_id)
     params[:response].map do |r|
       { questionId: r[:questionId], selection: r[:selection]}
     end

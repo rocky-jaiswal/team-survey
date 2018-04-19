@@ -5,10 +5,11 @@ import { push } from 'react-router-redux';
 import { Dispatch, RootStateType } from '../../constants/types';
 
 import Layout from '../../components/Layout';
-import { createSession } from '../../redux/app/actions';
+import { createSession, CREATE_SESSION_FAILED } from '../../redux/app/actions';
 
 interface Props {
   loading: boolean;
+  error: string | null;
   token: string;
   loggedIn: boolean;
 }
@@ -22,6 +23,7 @@ interface DispatchProps {
 const mapStateToProps = (state: RootStateType, ownProps: any): Props => {
   return {
     loading: state.app.loading,
+    error: state.app.error,
     loggedIn: state.app.loggedIn,
     token: ownProps.match.params.token
   };
@@ -41,6 +43,9 @@ export class Session extends React.Component<Props & DispatchProps> {
   }
 
   componentWillReceiveProps(nextProps: Props) {
+    if (nextProps.error === CREATE_SESSION_FAILED) {
+      this.props.changeRoute('/');
+    }
     if (nextProps.loggedIn) {
       this.props.changeRoute('/survey');
     }

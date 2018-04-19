@@ -19,7 +19,8 @@ import {
   SET_RESPONSE,
   SUBMIT_SURVEY_FAILED,
   SUBMIT_SURVEY_INPROGRESS,
-  SUBMIT_SURVEY_SUCCESS
+  SUBMIT_SURVEY_SUCCESS,
+  LOGOUT
 } from './actions';
 import { setResponse, checkValidity } from './validateAndSetResponse';
 
@@ -111,6 +112,7 @@ const appReducer = (state = initialState, action: ActionType<any>): AppStateType
         .set('loading', false)
         .set('error', state.error === FETCH_USER_PROFILE_FAILED ? null : state.error)
         .set('userEmail', action.payload.email)
+        .set('loggedIn', true)
         .set('userRole', action.payload.admin ? 'admin' : 'user');
 
     case SET_QUESTION_SEQUENCE:
@@ -137,6 +139,11 @@ const appReducer = (state = initialState, action: ActionType<any>): AppStateType
         .set('loading', false)
         .set('error', state.error === SUBMIT_SURVEY_FAILED ? null : state.error)
         .set('surveySubmitted', true);
+
+    case LOGOUT:
+      sessionStorage.clear();
+      return state
+        .set('loggedIn', false);
 
     default:
       return state;

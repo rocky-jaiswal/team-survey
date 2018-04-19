@@ -14,7 +14,9 @@ const RangeChoice = (props: Props) => {
         <div className="form-range">
           {props.question.options.map((option, index) => (
             <button
-              className={props.response && props.response.selection === option ? 'btn btn-success' : 'btn btn-default'}
+              className={props.response
+                && `${props.response.selection}` === `${option}`
+                ? 'btn btn-success' : 'btn btn-default'}
               key={index}
               style={{ width: `${100 / props.question.options.length}%`}}
               onClick={(e) => {

@@ -36,7 +36,7 @@ const Question = (props: Props) => {
         'question-wrapper' :
         'hidden'}
     >
-      <h2>{`${props.question.title} ${props.question.responseRequired ? '*' : ''}`}</h2>
+      <h2>{`${props.question.title}${props.question.responseRequired ? '*' : ''}`}</h2>
       {renderAppropriateQuestion(props.question)}
     </div>
   );

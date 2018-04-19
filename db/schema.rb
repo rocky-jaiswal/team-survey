@@ -10,16 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_18_154343) do
+ActiveRecord::Schema.define(version: 2018_04_19_111857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "responses", force: :cascade do |t|
-    t.bigint "user_id"
     t.bigint "survey_id"
     t.bigint "question_id"
     t.text "response"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "surveys", force: :cascade do |t|
+    t.text "title"
+    t.boolean "active"
+    t.bigint "respondents", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -34,5 +41,4 @@ ActiveRecord::Schema.define(version: 2018_04_18_154343) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "responses", "users"
 end
