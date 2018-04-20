@@ -54,8 +54,7 @@ export class Session extends React.Component<Props & DispatchProps> {
   render() {
     return (
       <Layout
-        email={''}
-        loggedIn={false}
+        changeRoute={this.props.changeRoute}
       >
         <div>
           <h1>Starting session ...</h1>

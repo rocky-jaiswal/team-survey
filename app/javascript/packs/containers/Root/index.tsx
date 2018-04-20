@@ -59,8 +59,7 @@ export class Root extends React.Component<Props & DispatchProps> {
   render() {
     return (
       <Layout
-        email={''}
-        loggedIn={false}
+        changeRoute={this.props.changeRoute}
       >
         <div>
           <h1><FormattedMessage id="app.welcome" /></h1>

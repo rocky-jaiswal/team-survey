@@ -67,17 +67,8 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
 export class Survey extends React.Component<Props & DispatchProps> {
 
   componentDidMount() {
-    if (!sessionStorage.getItem('jwt')) {
-      this.props.changeRoute('/');
-    } else {
+    if (sessionStorage.getItem('jwt')) {
       this.props.fetchQuestions();
-      this.props.fetchUserProfile();
-    }
-  }
-
-  componentWillReceiveProps(nextProps: Props) {
-    if (!sessionStorage.getItem('jwt') && !nextProps.loggedIn) {
-      this.props.changeRoute('/');
     }
   }
 
@@ -103,9 +94,12 @@ export class Survey extends React.Component<Props & DispatchProps> {
   render() {
     return (
       <Layout
+        needsLoggedInUser={true}
         email={this.props.userEmail}
         userRole={this.props.userRole}
         loggedIn={this.props.loggedIn}
+        changeRoute={this.props.changeRoute}
+        fetchUserProfile={this.props.fetchUserProfile}
         logout={this.props.logout}
       >
         <div className="main-survey">

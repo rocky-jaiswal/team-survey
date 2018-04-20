@@ -43,28 +43,16 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
 
 export class Admin extends React.Component<Props & DispatchProps> {
 
-  componentDidMount() {
-    if (!sessionStorage.getItem('jwt')) {
-      this.props.changeRoute('/');
-    } else {
-      this.props.fetchUserProfile();
-    }
-  }
-
-  componentWillReceiveProps(nextProps: Props) {
-    if (!sessionStorage.getItem('jwt')
-      && !nextProps.loggedIn
-      && nextProps.userRole !== 'admin') {
-      this.props.changeRoute('/');
-    }
-  }
-
   render() {
     return (
       <Layout
+        needsLoggedInUser={true}
+        needsAdmin={true}
         email={this.props.userEmail}
         userRole={this.props.userRole}
         loggedIn={this.props.loggedIn}
+        changeRoute={this.props.changeRoute}
+        fetchUserProfile={this.props.fetchUserProfile}
         logout={this.props.logout}
       >
         <div className="admin-page">
