@@ -2,6 +2,7 @@ import Root from '../containers/Root';
 import Session from '../containers/Session';
 import Survey from '../containers/Survey';
 import Admin from '../containers/Admin';
+import Users from '../containers/Users';
 
 interface RouteDefinition {
   sequence: number;
@@ -38,6 +39,12 @@ const routes: Routes = {
     component: Admin,
     exact: true,
     path: '/admin'
+  },
+  users: {
+    sequence: 5,
+    component: Users,
+    exact: true,
+    path: '/users'
   }
 };
 

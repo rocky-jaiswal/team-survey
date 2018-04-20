@@ -41,7 +41,11 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
   };
 };
 
-export class Admin extends React.Component<Props & DispatchProps> {
+export class Users extends React.Component<Props & DispatchProps> {
+
+  // componentDidMount() {
+
+  // }
 
   render() {
     return (
@@ -57,12 +61,7 @@ export class Admin extends React.Component<Props & DispatchProps> {
       >
         <div className="admin-page">
           <h2>Welcome, Admin</h2>
-          <ul className="admin-actions">
-            <li><Link to="/users">Manage Users</Link></li>
-            <li><Link to="/surveys">Manage Surveys</Link></li>
-            <li><Link to="/results">View Responses</Link></li>
-            <li><Link to="/survey">Back to latest survey</Link></li>
-          </ul>
+          <Link to="/survey">Back to latest survey</Link>
         </div>
       </Layout>
     );
@@ -70,4 +69,4 @@ export class Admin extends React.Component<Props & DispatchProps> {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Admin);
+export default connect(mapStateToProps, mapDispatchToProps)(Users);
