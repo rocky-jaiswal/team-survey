@@ -38,6 +38,11 @@ const AppAPI = {
   async submitSurvey(surveyId: number, response: ResponseType[]) {
     return AppAPI.init()
       .post(`${Config.env.baseURL}/surveys/${surveyId}/responses`, { response });
+  },
+
+  async fetchAllUsers() {
+    return AppAPI.init()
+      .get(`${Config.env.baseURL}/users`);
   }
 
 };

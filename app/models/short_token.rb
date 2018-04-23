@@ -9,8 +9,8 @@ class ShortToken
   end
 
   def create
-    user = User.find_by(email: user_email)
-    if (user)
+    user = User.find_or_create_by(email: user_email)
+    if (user && !user.blocked?)
       now = DateTime.now
       token = generate_token(now)
       user.short_token = token

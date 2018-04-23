@@ -20,7 +20,10 @@ import {
   SUBMIT_SURVEY_FAILED,
   SUBMIT_SURVEY_INPROGRESS,
   SUBMIT_SURVEY_SUCCESS,
-  LOGOUT
+  LOGOUT,
+  GET_ALL_USERS_INPROGRESS,
+  GET_ALL_USERS_FAILED,
+  GET_ALL_USERS_SUCCESS
 } from './actions';
 import { setResponse, checkValidity } from './validateAndSetResponse';
 
@@ -37,7 +40,12 @@ const iState: AppStateType = {
   visibleQuestionSequence: 1,
   responses: [],
   allResponsesValid: false,
-  surveySubmitted: false
+  surveySubmitted: false,
+  admin: {
+    allUsers: [],
+    allSurveys: [],
+    allSubmittedResponses: []
+  }
 };
 
 export const initialState = Immutable.from(iState);
@@ -139,6 +147,21 @@ const appReducer = (state = initialState, action: ActionType<any>): AppStateType
         .set('loading', false)
         .set('error', state.error === SUBMIT_SURVEY_FAILED ? null : state.error)
         .set('surveySubmitted', true);
+
+    case GET_ALL_USERS_INPROGRESS:
+      return state
+        .set('loading', true);
+
+    case GET_ALL_USERS_FAILED:
+      return state
+        .set('loading', false)
+        .set('error', GET_ALL_USERS_FAILED);
+
+    case GET_ALL_USERS_SUCCESS:
+      return state
+        .set('loading', false)
+        .set('error', state.error === GET_ALL_USERS_FAILED ? null : state.error)
+        .setIn(['admin', 'allUsers'], action.payload);
 
     case LOGOUT:
       sessionStorage.clear();

@@ -1,4 +1,4 @@
-import { QuestionType, ResponseType } from '../../constants/types';
+import { QuestionType, ResponseType, UserType } from '../../constants/types';
 
 export const SET_USER_EMAIL            = 'app/SET_USER_EMAIL';
 
@@ -29,6 +29,11 @@ export const SUBMIT_SURVEY_FAILED     = 'app/SUBMIT_SURVEY_FAILED';
 
 export const SET_QUESTION_SEQUENCE = 'app/SET_QUESTION_SEQUENCE';
 export const SET_RESPONSE = 'app/SET_RESPONSE';
+
+export const GET_ALL_USERS            = 'app/GET_ALL_USERS';
+export const GET_ALL_USERS_INPROGRESS = 'app/GET_ALL_USERS_INPROGRESS';
+export const GET_ALL_USERS_SUCCESS    = 'app/GET_ALL_USERS_SUCCESS';
+export const GET_ALL_USERS_FAILED     = 'app/GET_ALL_USERS_FAILED';
 
 export const LOGOUT = 'app/LOGOUT';
 
@@ -182,5 +187,30 @@ export const submitSurveyFailed = () => {
 export const logout = () => {
   return {
     type: LOGOUT
+  };
+};
+
+export const getAllUsers = () => {
+  return {
+    type: GET_ALL_USERS
+  };
+};
+
+export const getAllUsersInProgress = () => {
+  return {
+    type: GET_ALL_USERS_INPROGRESS
+  };
+};
+
+export const getAllUsersSuccess = (payload: UserType[]) => {
+  return {
+    payload,
+    type: GET_ALL_USERS_SUCCESS
+  };
+};
+
+export const getAllUsersFailed = () => {
+  return {
+    type: GET_ALL_USERS_FAILED
   };
 };

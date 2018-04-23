@@ -19,6 +19,23 @@ interface Response {
 
 export type ResponseType = Response;
 
+interface User {
+  id?: number;
+  email: string;
+  role: 'admin' | 'user';
+  admin?: boolean;
+  blocked?: string | null;
+}
+
+export type UserType = User;
+
+interface Survey {
+  name: string;
+  active?: boolean | null;
+}
+
+export type SurveyType = Survey;
+
 interface AppState {
   loading: boolean;
   locale: string;
@@ -33,6 +50,12 @@ interface AppState {
   responses: Response[];
   allResponsesValid: boolean;
   surveySubmitted: boolean;
+  admin: {
+    allUsers: UserType[];
+    allSurveys: SurveyType[];
+    // tslint:disable-next-line:no-any
+    allSubmittedResponses: any;
+  };
 }
 
 export type AppStateType = AppState;
