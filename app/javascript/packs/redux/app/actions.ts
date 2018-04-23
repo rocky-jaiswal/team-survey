@@ -1,4 +1,4 @@
-import { QuestionType, ResponseType, UserType } from '../../constants/types';
+import { QuestionType, ResponseType, UserType, SurveyType } from '../../constants/types';
 
 export const SET_USER_EMAIL            = 'app/SET_USER_EMAIL';
 
@@ -34,6 +34,11 @@ export const GET_ALL_USERS            = 'app/GET_ALL_USERS';
 export const GET_ALL_USERS_INPROGRESS = 'app/GET_ALL_USERS_INPROGRESS';
 export const GET_ALL_USERS_SUCCESS    = 'app/GET_ALL_USERS_SUCCESS';
 export const GET_ALL_USERS_FAILED     = 'app/GET_ALL_USERS_FAILED';
+
+export const GET_ALL_SURVEYS            = 'app/GET_ALL_SURVEYS';
+export const GET_ALL_SURVEYS_INPROGRESS = 'app/GET_ALL_SURVEYS_INPROGRESS';
+export const GET_ALL_SURVEYS_SUCCESS    = 'app/GET_ALL_SURVEYS_SUCCESS';
+export const GET_ALL_SURVEYS_FAILED     = 'app/GET_ALL_SURVEYS_FAILED';
 
 export const LOGOUT = 'app/LOGOUT';
 
@@ -212,5 +217,30 @@ export const getAllUsersSuccess = (payload: UserType[]) => {
 export const getAllUsersFailed = () => {
   return {
     type: GET_ALL_USERS_FAILED
+  };
+};
+
+export const getAllSurveys = () => {
+  return {
+    type: GET_ALL_SURVEYS
+  };
+};
+
+export const getAllSurveysInProgress = () => {
+  return {
+    type: GET_ALL_SURVEYS_INPROGRESS
+  };
+};
+
+export const getAllSurveysSuccess = (payload: SurveyType[]) => {
+  return {
+    payload,
+    type: GET_ALL_SURVEYS_SUCCESS
+  };
+};
+
+export const getAllSurveysFailed = () => {
+  return {
+    type: GET_ALL_SURVEYS_FAILED
   };
 };

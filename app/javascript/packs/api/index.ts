@@ -43,6 +43,11 @@ const AppAPI = {
   async fetchAllUsers() {
     return AppAPI.init()
       .get(`${Config.env.baseURL}/users`);
+  },
+
+  async fetchAllSurveys() {
+    return AppAPI.init()
+      .get(`${Config.env.baseURL}/surveys`);
   }
 
 };

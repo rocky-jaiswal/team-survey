@@ -30,7 +30,8 @@ interface User {
 export type UserType = User;
 
 interface Survey {
-  name: string;
+  id?: number;
+  title: string;
   active?: boolean | null;
 }
 

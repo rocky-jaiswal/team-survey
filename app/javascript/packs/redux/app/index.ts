@@ -23,7 +23,10 @@ import {
   LOGOUT,
   GET_ALL_USERS_INPROGRESS,
   GET_ALL_USERS_FAILED,
-  GET_ALL_USERS_SUCCESS
+  GET_ALL_USERS_SUCCESS,
+  GET_ALL_SURVEYS_INPROGRESS,
+  GET_ALL_SURVEYS_FAILED,
+  GET_ALL_SURVEYS_SUCCESS
 } from './actions';
 import { setResponse, checkValidity } from './validateAndSetResponse';
 
@@ -162,6 +165,21 @@ const appReducer = (state = initialState, action: ActionType<any>): AppStateType
         .set('loading', false)
         .set('error', state.error === GET_ALL_USERS_FAILED ? null : state.error)
         .setIn(['admin', 'allUsers'], action.payload);
+
+    case GET_ALL_SURVEYS_INPROGRESS:
+      return state
+        .set('loading', true);
+
+    case GET_ALL_SURVEYS_FAILED:
+      return state
+        .set('loading', false)
+        .set('error', GET_ALL_SURVEYS_FAILED);
+
+    case GET_ALL_SURVEYS_SUCCESS:
+      return state
+        .set('loading', false)
+        .set('error', state.error === GET_ALL_SURVEYS_FAILED ? null : state.error)
+        .setIn(['admin', 'allSurveys'], action.payload);
 
     case LOGOUT:
       sessionStorage.clear();
