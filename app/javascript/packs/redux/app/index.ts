@@ -26,7 +26,10 @@ import {
   GET_ALL_USERS_SUCCESS,
   GET_ALL_SURVEYS_INPROGRESS,
   GET_ALL_SURVEYS_FAILED,
-  GET_ALL_SURVEYS_SUCCESS
+  GET_ALL_SURVEYS_SUCCESS,
+  GET_ALL_RESPONSES_INPROGRESS,
+  GET_ALL_RESPONSES_FAILED,
+  GET_ALL_RESPONSES_SUCCESS
 } from './actions';
 import { setResponse, checkValidity } from './validateAndSetResponse';
 
@@ -45,6 +48,7 @@ const iState: AppStateType = {
   allResponsesValid: false,
   surveySubmitted: false,
   admin: {
+    selectedSurvey: null,
     allUsers: [],
     allSurveys: [],
     allSubmittedResponses: []
@@ -180,6 +184,21 @@ const appReducer = (state = initialState, action: ActionType<any>): AppStateType
         .set('loading', false)
         .set('error', state.error === GET_ALL_SURVEYS_FAILED ? null : state.error)
         .setIn(['admin', 'allSurveys'], action.payload);
+
+    case GET_ALL_RESPONSES_INPROGRESS:
+      return state
+        .set('loading', true);
+
+    case GET_ALL_RESPONSES_FAILED:
+      return state
+        .set('loading', false)
+        .set('error', GET_ALL_RESPONSES_FAILED);
+
+    case GET_ALL_RESPONSES_SUCCESS:
+      return state
+        .set('loading', false)
+        .set('error', state.error === GET_ALL_RESPONSES_FAILED ? null : state.error)
+        .setIn(['admin', 'allSubmittedResponses'], action.payload);
 
     case LOGOUT:
       sessionStorage.clear();

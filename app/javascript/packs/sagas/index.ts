@@ -5,6 +5,7 @@ import fetchUserProfileWatcher from './fetchUserProfile';
 import submitSurveyWatcher from './submitSurvey';
 import fetchAllUsersWatcher from './fetchAllUsers';
 import fetchAllSurveysWatcher from './fetchAllSurveys';
+import fetchAllResponsesWatcher from './fetchAllResponses';
 
 export default [
   generateTokenWatcher,
@@ -13,5 +14,6 @@ export default [
   fetchUserProfileWatcher,
   submitSurveyWatcher,
   fetchAllUsersWatcher,
-  fetchAllSurveysWatcher
+  fetchAllSurveysWatcher,
+  fetchAllResponsesWatcher
 ];

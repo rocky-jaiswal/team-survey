@@ -8,7 +8,9 @@ import { Dispatch, RootStateType } from '../../constants/types';
 import Layout from '../../components/Layout';
 import {
   fetchUserProfile,
-  logout
+  logout,
+  getAllSurveys,
+  getAllResponses
 } from '../../redux/app/actions';
 
 interface Props {
@@ -16,11 +18,15 @@ interface Props {
   loggedIn: boolean;
   userEmail: string | null;
   userRole: string;
+  // tslint:disable-next-line:no-any
+  allResponses: any;
 }
 
 interface DispatchProps {
   changeRoute(route: string): {};
   fetchUserProfile(): {};
+  getAllSurveys(): {};
+  getAllResponses(): {};
   logout(): {};
 }
 
@@ -29,7 +35,8 @@ const mapStateToProps = (state: RootStateType, ownProps: {}): Props => {
     loading: state.app.loading,
     loggedIn: state.app.loggedIn,
     userEmail: state.app.userEmail,
-    userRole: state.app.userRole
+    userRole: state.app.userRole,
+    allResponses: state.app.admin.allSubmittedResponses
   };
 };
 
@@ -37,11 +44,19 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
   return {
     changeRoute: (payload: string) => dispatch(push(payload)),
     fetchUserProfile: () => dispatch(fetchUserProfile()),
+    getAllResponses: () => dispatch(getAllResponses()),
+    getAllSurveys: () => dispatch(getAllSurveys()),
     logout: () => dispatch(logout())
   };
 };
 
-export class Admin extends React.Component<Props & DispatchProps> {
+export class AllResponses extends React.Component<Props & DispatchProps> {
+
+  componentDidMount() {
+    if (sessionStorage.getItem('jwt')) {
+      this.props.getAllSurveys();
+    }
+  }
 
   render() {
     return (
@@ -57,12 +72,7 @@ export class Admin extends React.Component<Props & DispatchProps> {
       >
         <div className="admin-page">
           <h2>Welcome, Admin</h2>
-          <ul className="admin-actions">
-            <li><Link to="/users">Manage Users</Link></li>
-            <li><Link to="/allSurveys">Manage Surveys</Link></li>
-            <li><Link to="/responses">View Responses</Link></li>
-            <li><Link to="/survey">Back to latest survey</Link></li>
-          </ul>
+          <Link to="/survey">Back to latest survey</Link>
         </div>
       </Layout>
     );
@@ -70,4 +80,4 @@ export class Admin extends React.Component<Props & DispatchProps> {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Admin);
+export default connect(mapStateToProps, mapDispatchToProps)(AllResponses);

@@ -52,6 +52,7 @@ interface AppState {
   allResponsesValid: boolean;
   surveySubmitted: boolean;
   admin: {
+    selectedSurvey: number | null;
     allUsers: UserType[];
     allSurveys: SurveyType[];
     // tslint:disable-next-line:no-any

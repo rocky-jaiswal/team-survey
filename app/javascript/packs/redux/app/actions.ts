@@ -40,6 +40,11 @@ export const GET_ALL_SURVEYS_INPROGRESS = 'app/GET_ALL_SURVEYS_INPROGRESS';
 export const GET_ALL_SURVEYS_SUCCESS    = 'app/GET_ALL_SURVEYS_SUCCESS';
 export const GET_ALL_SURVEYS_FAILED     = 'app/GET_ALL_SURVEYS_FAILED';
 
+export const GET_ALL_RESPONSES            = 'app/GET_ALL_RESPONSES';
+export const GET_ALL_RESPONSES_INPROGRESS = 'app/GET_ALL_RESPONSES_INPROGRESS';
+export const GET_ALL_RESPONSES_SUCCESS    = 'app/GET_ALL_RESPONSES_SUCCESS';
+export const GET_ALL_RESPONSES_FAILED     = 'app/GET_ALL_RESPONSES_FAILED';
+
 export const LOGOUT = 'app/LOGOUT';
 
 export const setUserEmail = (payload: string) => {
@@ -242,5 +247,31 @@ export const getAllSurveysSuccess = (payload: SurveyType[]) => {
 export const getAllSurveysFailed = () => {
   return {
     type: GET_ALL_SURVEYS_FAILED
+  };
+};
+
+export const getAllResponses = () => {
+  return {
+    type: GET_ALL_RESPONSES
+  };
+};
+
+export const getAllResponsesInProgress = () => {
+  return {
+    type: GET_ALL_RESPONSES_INPROGRESS
+  };
+};
+
+// tslint:disable-next-line:no-any
+export const getAllResponsesSuccess = (payload: any) => {
+  return {
+    payload,
+    type: GET_ALL_RESPONSES_SUCCESS
+  };
+};
+
+export const getAllResponsesFailed = () => {
+  return {
+    type: GET_ALL_RESPONSES_FAILED
   };
 };

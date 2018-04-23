@@ -4,6 +4,7 @@ import Survey from '../containers/Survey';
 import Admin from '../containers/Admin';
 import Users from '../containers/Users';
 import AllSurveys from '../containers/AllSurveys';
+import AllResponses from '../containers/AllResponses';
 
 interface RouteDefinition {
   sequence: number;
@@ -52,6 +53,12 @@ const routes: Routes = {
     component: AllSurveys,
     exact: true,
     path: '/allSurveys'
+  },
+  allResponses: {
+    sequence: 7,
+    component: AllResponses,
+    exact: true,
+    path: '/responses'
   }
 };
 
