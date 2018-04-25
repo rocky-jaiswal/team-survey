@@ -13,6 +13,7 @@ const FreeText = (props: Props) => {
         <div className="form-range">
           <textarea
             style={{ width: '100%' }}
+            placeholder="Enter text here ..."
             onChange={(e) => {
               props.setResponse({
                 questionId: props.question.id,

@@ -79,6 +79,12 @@
     }
   }
 
+  .text-choice-question-wrapper {
+    textarea {
+      border: 1px solid $orange;
+    }
+  }
+
   .response-confirmation {
     margin-top: $vspace;
     color: $main-white;
