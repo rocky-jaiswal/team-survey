@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { QuestionType, ResponseType } from '../../constants/types';
 import Question from '../Question';
+import Navigation from './Navigation';
 
 interface Props {
   questions: QuestionType[];
@@ -9,6 +10,7 @@ interface Props {
   visibleQuestionSequence: number;
   allResponsesValid: boolean;
   setQuestionSequence(payload: number): {};
+  setNextQuestion(): {};
   setResponse(payload: ResponseType): {};
   submitSurvey(): {};
 }
@@ -25,41 +27,32 @@ const QuestionsWrapper = (props: Props) => {
     return true;
   };
 
-  const prevQuestion = () => {
-    if (hasValidResponse() && props.visibleQuestionSequence !== 1) {
-      props.setQuestionSequence(props.visibleQuestionSequence - 1);
-    }
-  };
 
-  const nextQuestion = () => {
-    if (hasValidResponse() && props.visibleQuestionSequence < props.questions.length) {
-      props.setQuestionSequence(props.visibleQuestionSequence + 1);
-    }
-  };
 
   return (
     <div className="questions-wrapper">
-      <p>{`Question ${props.visibleQuestionSequence} of ${props.questions.length}`}</p>
+      <div className="question-tracker">{`Question ${props.visibleQuestionSequence} / ${props.questions.length}`}</div>
       {props.questions.map((question) =>
         <Question
           key={question.id}
           question={question}
           response={props.responses.find((r) => r.questionId === question.id)}
           visibleQuestionSequence={props.visibleQuestionSequence}
+          setNextQuestion={props.setNextQuestion}
+          validResponse={hasValidResponse()}
           setResponse={props.setResponse}
         />
       )}
-      <div className="navigation">
-        <button className="btn btn-default" disabled={!hasValidResponse()} onClick={prevQuestion}>Back</button>
-        <button
-          className={props.allResponsesValid ? 'btn btn-success' : 'hidden'}
-          disabled={!props.allResponsesValid}
-          onClick={() => props.submitSurvey()}
-        >
-          Submit
-        </button>
-        <button className="btn btn-primary" disabled={!hasValidResponse()} onClick={nextQuestion}>Next</button>
-      </div>
+      <Navigation
+        questions={props.questions}
+        responses={props.responses}
+        allResponsesValid={props.allResponsesValid}
+        visibleQuestionSequence={props.visibleQuestionSequence}
+        setQuestionSequence={props.setQuestionSequence}
+        setResponse={props.setResponse}
+        hasValidResponse={hasValidResponse}
+        submitSurvey={props.submitSurvey}
+      />
     </div>
   );
 };

@@ -29,7 +29,8 @@ import {
   GET_ALL_SURVEYS_SUCCESS,
   GET_ALL_RESPONSES_INPROGRESS,
   GET_ALL_RESPONSES_FAILED,
-  GET_ALL_RESPONSES_SUCCESS
+  GET_ALL_RESPONSES_SUCCESS,
+  SET_NEXT_QUESTION
 } from './actions';
 import { setResponse, checkValidity } from './validateAndSetResponse';
 
@@ -110,7 +111,8 @@ const appReducer = (state = initialState, action: ActionType<any>): AppStateType
         .set('loading', false)
         .set('error', state.error === FETCH_QUESTIONS_FAILED ? null : state.error)
         .set('surveyId', action.payload.survey_id)
-        .set('questions', action.payload.questions)
+        .set('questions', action.payload.questions
+          .sort((q1: QuestionType, q2: QuestionType) => q1.sequence - q2.sequence))
         .set('visibleQuestionSequence', Math.min(...action.payload.questions.map((q: QuestionType) => q.sequence)));
 
     case FETCH_USER_PROFILE_INPROGRESS:
@@ -133,6 +135,13 @@ const appReducer = (state = initialState, action: ActionType<any>): AppStateType
     case SET_QUESTION_SEQUENCE:
       return state
         .set('visibleQuestionSequence', action.payload);
+
+    case SET_NEXT_QUESTION:
+      return state
+        .set('visibleQuestionSequence',
+             state.visibleQuestionSequence < state.questions.length
+            ? state.visibleQuestionSequence + 1
+            : state.visibleQuestionSequence);
 
     case SET_RESPONSE:
       const updatedResponses = setResponse(state.questions, state.responses, action.payload);
@@ -183,7 +192,8 @@ const appReducer = (state = initialState, action: ActionType<any>): AppStateType
       return state
         .set('loading', false)
         .set('error', state.error === GET_ALL_SURVEYS_FAILED ? null : state.error)
-        .setIn(['admin', 'allSurveys'], action.payload);
+        .setIn(['admin', 'allSurveys'], action.payload)
+        .setIn(['admin', 'selectedSurvey'], action.payload[0].id);
 
     case GET_ALL_RESPONSES_INPROGRESS:
       return state

@@ -4,6 +4,7 @@ interface Question {
   id: number;
   sequence: number;
   title: string;
+  subtitle?: string;
   type: 'MULTI' | 'RADIO' | 'RANGE' | 'TEXT';
   options: string[];
   responseRequired: boolean;

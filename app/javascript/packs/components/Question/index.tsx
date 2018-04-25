@@ -10,22 +10,47 @@ interface Props {
   question: QuestionType;
   response?: ResponseType;
   visibleQuestionSequence: number;
+  validResponse: boolean;
   setResponse(payload: ResponseType): {};
+  setNextQuestion(): {};
 }
 
 const Question = (props: Props) => {
   const renderAppropriateQuestion = (question: QuestionType) => {
     if (question.type === 'MULTI') {
-      return <MultipleChoice question={question} setResponse={props.setResponse} />;
+      return (
+        <MultipleChoice
+          question={question}
+          response={props.response}
+          setResponse={props.setResponse}
+        />
+      );
     }
     if (question.type === 'RADIO') {
-      return <SingleChoice question={question} setResponse={props.setResponse} />;
+      return (
+        <SingleChoice
+          question={question}
+          response={props.response}
+          setResponse={props.setResponse}
+        />
+      );
     }
     if (question.type === 'RANGE') {
-      return <RangeChoice question={question} setResponse={props.setResponse} response={props.response} />;
+      return (
+        <RangeChoice
+          question={question}
+          setResponse={props.setResponse}
+          response={props.response}
+        />
+      );
     }
     if (question.type === 'TEXT') {
-      return <FreeText question={question} setResponse={props.setResponse} />;
+      return (
+        <FreeText
+          question={question}
+          setResponse={props.setResponse}
+        />
+      );
     }
     return <span />;
   };
@@ -38,6 +63,7 @@ const Question = (props: Props) => {
     >
       <h2>{`${props.question.title}${props.question.responseRequired ? '*' : ''}`}</h2>
       {renderAppropriateQuestion(props.question)}
+      <h5>{props.question.subtitle}</h5>
     </div>
   );
 };

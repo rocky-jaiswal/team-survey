@@ -6,26 +6,26 @@
       type: MULTI
       responseRequired: true
       options:
-        - a
-        - b
-        - c
-        - d
-        - e
-        - f
-        - g
+        - "Bored / Indifferent"
+        - "Frightened / Anxious"
+        - "Sad / Disappointed"
+        - "Angry / Frustrated"
+        - "Happy / Enthusiastic"
+        - "Ashamed / Guilty"
+        - "Proud / Content"
     - id: 2
       sequence: 2
-      title: Q2
+      title: How would you rate the quality of your sleep this week?
       type: RADIO
       responseRequired: true
       options:
-        - 1
-        - 2
-        - 3
-        - 4
+        - "I am getting enough sleep"
+        - "Not enough sleep: trouble falling asleep or staying asleep"
+        - "I am not getting enough sleep: Going to bed too late"
     - id: 3
       sequence: 3
-      title: Q3
+      title: "Do you feel that you have taken enough time for yourself this week, to do things other than work?"
+      subtitle: "(1 = none at all & 5 = Yes, lots)"
       type: RANGE
       responseRequired: true
       options:
@@ -36,21 +36,68 @@
         - 5
     - id: 4
       sequence: 4
-      title: Q4
-      type: TEXT
-      responseRequired: false
+      title: Do you feel your work-life balance has been sustainable this week?
+      type: RADIO
+      responseRequired: true
+      options:
+        - "Yes, my work life balance has been sustainable"
+        - "It's sustainable right now but not in the long run"
+        - "No, it is not sustainable"
+    - id: 5
+      sequence: 5
+      title: How much lasting, positive impact have you had this week?
+      subtitle: "(1 = none at all & 5 = Yes, lots)"
+      type: RANGE
+      responseRequired: true
       options:
         - 1
         - 2
         - 3
         - 4
-    - id: 5
-      sequence: 5
-      title: Q5
-      type: MULTI
-      responseRequired: false
+        - 5
+    - id: 6
+      sequence: 6
+      title: Do you feel that the team on your current study understands your work and the value you are delivering to the team and the client?
+      subtitle: "(1 = none at all & 5 = Lots!)"
+      type: RANGE
+      responseRequired: true
       options:
-        - a
-        - b
-        - c
-        - d
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+    - id: 7
+      sequence: 7
+      title: Do you feel like an integrated part of the CST on your current study?
+      subtitle: (1 = none at all & 5 = Yes, absolutely!)
+      type: RANGE
+      responseRequired: true
+      options:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+    - id: 8
+      sequence: 8
+      title: Are you are getting the support you need from your cell leadership?
+      subtitle: (1 = none at all & 5 = Yes, absolutely!)
+      type: RANGE
+      responseRequired: true
+      options:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+    - id: 9
+      sequence: 9
+      title: What opportunities have you found this week to grow personally and professionally?
+      type: TEXT
+      responseRequired: true
+    - id: 10
+      sequence: 10
+      title: Please give us feedback on this pilot Heartbeat survey
+      type: TEXT
+      responseRequired: false

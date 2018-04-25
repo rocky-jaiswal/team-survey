@@ -8,41 +8,47 @@
 .questions-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   width: 100%;
-  padding: 2 * $vspace;
-  border: 1px solid $gray-600;
 
   h2 {
     width: 100%;
     margin-bottom: 2 * $vspace;
   }
 
-  p {
+  .question-tracker {
     margin: 0 5px 5px 0;
-    background-color: $gray-700;
-    color: $gray-200;
+    color: $gray-700;
     font-style: italic;
-    padding: $vspace;
+    padding: 20px 20px 0 20px;
   }
 
   .navigation {
     display: flex;
-    justify-content: space-between;
-    background-color: $gray-500;
-    padding: $vspace / 2;
+    justify-content: flex-start;
+    padding: 5px 20px 10px 20px;
+    margin-top: 2 * $vspace;
+
+    button {
+      margin-right: 2 * $hspace;
+    }
   }
 }
-
-@import '_variables';
 
 .question-wrapper {
   display: flex;
   flex-direction: column;
+  color: $gray-650;
   width: 100%;
-  padding: 20px;
-  border: 1px dashed $gray-500;
-  background-color: #ddecdb;
+  min-height: 350px;
+  padding: 0 20px 20px 20px;
+
+  h1, h2, h3, h4, h5 {
+    color: $orange;
+  }
+
+  h5 {
+    font-style: italic;
+  }
 
   button[type='submit'] {
     margin-top: 2 * $vspace;
@@ -65,6 +71,17 @@
     .form-range {
       display: flex;
       justify-content: space-between;
+      margin: 2 * $vspace 0;
     }
+    button {
+      border: 1px solid $gray-650;
+      color: $main-dark;
+    }
+  }
+
+  .response-confirmation {
+    margin-top: $vspace;
+    color: $main-white;
+    font-family: $main-display-font;
   }
 }

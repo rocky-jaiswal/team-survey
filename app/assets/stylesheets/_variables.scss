@@ -1,4 +1,4 @@
-$main-white: hsl(0, 0%, 94%);
+$main-white: hsl(0, 0%, 99%);
 $main-dark:  hsl(0, 0%, 24%);
 $white:      #fff !default;
 $gray-100:   #f6f6f6 !default;
@@ -7,6 +7,7 @@ $gray-300:   #dee2e6 !default;
 $gray-400:   #ced4da !default;
 $gray-500:   #adb5bd !default;
 $gray-600:   #999 !default;
+$gray-650:   #7a7a7a !default;
 $gray-700:   #555 !default;
 $gray-800:   #333 !default;
 $gray-900:   #222 !default;
@@ -17,13 +18,14 @@ $indigo:  #6610f2 !default;
 $purple:  #6255a7 !default;
 $pink:    #e83e8c !default;
 $red:     #FF4136 !default;
-$orange:  #fd7e14 !default;
+$orange:  #F76560 !default;
+$brown:   #8d1510 !default;
 $yellow:  #FF851B !default;
 $green:   #55a757 !default;
 $teal:    #20c997 !default;
 $cyan:    #75CAEB !default;
 
-$primary:       $blue !default;
+$primary:       $orange !default;
 $secondary:     $gray-200 !default;
 $success:       $green !default;
 $info:          $cyan !default;
@@ -40,8 +42,9 @@ $hspace: 10px;
 
 // Fonts
 
-$font-family-sans-serif:      "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+$font-family-sans-serif:      "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
 $font-size-base:              1rem !default;
+$main-display-font:           "Arvo", serif;
 $main-font:                   $font-family-sans-serif;
 
 

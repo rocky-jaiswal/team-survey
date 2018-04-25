@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { Link } from 'react-router-dom';
 
-import { Dispatch, RootStateType } from '../../constants/types';
+import { Dispatch, RootStateType, SurveyType } from '../../constants/types';
 
 import Layout from '../../components/Layout';
 import {
@@ -18,6 +18,7 @@ interface Props {
   loggedIn: boolean;
   userEmail: string | null;
   userRole: string;
+  allSurveys: SurveyType[];
   // tslint:disable-next-line:no-any
   allResponses: any;
 }
@@ -36,6 +37,7 @@ const mapStateToProps = (state: RootStateType, ownProps: {}): Props => {
     loggedIn: state.app.loggedIn,
     userEmail: state.app.userEmail,
     userRole: state.app.userRole,
+    allSurveys: state.app.admin.allSurveys,
     allResponses: state.app.admin.allSubmittedResponses
   };
 };
@@ -73,6 +75,15 @@ export class AllResponses extends React.Component<Props & DispatchProps> {
         <div className="admin-page">
           <h2>Welcome, Admin</h2>
           <Link to="/survey">Back to latest survey</Link>
+          <div>
+            <h3>Please select the survey to view responses:</h3>
+            <select name="select-response-for-survey">
+              {this.props.allSurveys.map((survey) => (
+                <option value={survey.id}>{survey.title}</option>
+              ))}
+            </select>
+            <h3>Responses:</h3>
+          </div>
         </div>
       </Layout>
     );

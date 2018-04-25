@@ -28,6 +28,7 @@ export const SUBMIT_SURVEY_SUCCESS    = 'app/SUBMIT_SURVEY_SUCCESS';
 export const SUBMIT_SURVEY_FAILED     = 'app/SUBMIT_SURVEY_FAILED';
 
 export const SET_QUESTION_SEQUENCE = 'app/SET_QUESTION_SEQUENCE';
+export const SET_NEXT_QUESTION = 'app/SET_NEXT_QUESTION';
 export const SET_RESPONSE = 'app/SET_RESPONSE';
 
 export const GET_ALL_USERS            = 'app/GET_ALL_USERS';
@@ -160,6 +161,12 @@ export const setQuestionSequence = (payload: number) => {
   return {
     payload,
     type: SET_QUESTION_SEQUENCE
+  };
+};
+
+export const setNextQuestion = () => {
+  return {
+    type: SET_NEXT_QUESTION
   };
 };
 

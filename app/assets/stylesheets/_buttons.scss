@@ -1,0 +1,87 @@
+@import '_variables';
+
+.btnx {
+  border-radius: 3px;
+  padding: 5px 10px;
+  width: 100px;
+  text-decoration: none;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+  border: none;
+  outline: none;
+  font-family: $main-display-font;
+}
+
+.btnx:active {
+  transform: translate(0px, 2px);
+  -webkit-transform: translate(0px, 2px);
+}
+
+.btnx[disabled] {
+  background-color: #cccccc;
+}
+
+.btnx[disabled]:hover {
+  background-color: #cccccc;
+}
+
+.blue {
+  background-color: #55acee;
+  box-shadow: 0px 5px 0px 0px #3C93D5;
+}
+
+.blue:hover {
+  background-color: #6FC6FF;
+}
+
+.green {
+  background-color: #2ecc71;
+}
+
+.green:hover {
+  background-color: #48E68B;
+}
+
+.red {
+  background-color: #e74c3c;
+  box-shadow: 0px 5px 0px 0px #CE3323;
+}
+
+.red:hover {
+  background-color: #FF6656;
+}
+
+.purple {
+  background-color: #9b59b6;
+  box-shadow: 0px 5px 0px 0px #82409D;
+}
+
+.purple:hover {
+  background-color: #B573D0;
+}
+
+.orange {
+  background-color: $orange;
+}
+
+.orange:hover {
+  background-color: #ff6b3e;
+}
+
+.white {
+  background-color: #e4e4e4;
+}
+
+.white:hover {
+  background-color: #cfcfcf;
+}
+
+.yellow {
+  background-color: #f1c40f;
+  box-shadow: 0px 5px 0px 0px #D8AB00;
+}
+
+.yellow:hover {
+  background-color: #FFDE29;
+}

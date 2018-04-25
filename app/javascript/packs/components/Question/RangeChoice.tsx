@@ -16,7 +16,7 @@ const RangeChoice = (props: Props) => {
             <button
               className={props.response
                 && `${props.response.selection}` === `${option}`
-                ? 'btn btn-success' : 'btn btn-default'}
+                ? 'btnx orange' : 'btnx white'}
               key={index}
               style={{ width: `${100 / props.question.options.length}%`}}
               onClick={(e) => {

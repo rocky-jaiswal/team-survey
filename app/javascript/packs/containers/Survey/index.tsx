@@ -11,7 +11,8 @@ import {
   setQuestionSequence,
   setResponse,
   submitSurvey,
-  logout
+  logout,
+  setNextQuestion
 } from '../../redux/app/actions';
 import QuestionsWrapper from '../../components/QuestionsWrapper';
 import Message from '../../components/Message';
@@ -33,6 +34,7 @@ interface DispatchProps {
   fetchQuestions(): {};
   fetchUserProfile(): {};
   setQuestionSequence(payload: number): {};
+  setNextQuestion(): {};
   setResponse(payload: ResponseType): {};
   submitSurvey(): {};
   logout(): {};
@@ -58,6 +60,7 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
     fetchQuestions: () => dispatch(fetchQuestions()),
     fetchUserProfile: () => dispatch(fetchUserProfile()),
     setQuestionSequence: (payload: number) => dispatch(setQuestionSequence(payload)),
+    setNextQuestion: () => dispatch(setNextQuestion()),
     setResponse: (payload: ResponseType) => dispatch(setResponse(payload)),
     submitSurvey: () => dispatch(submitSurvey()),
     logout: () => dispatch(logout())
@@ -85,6 +88,7 @@ export class Survey extends React.Component<Props & DispatchProps> {
         visibleQuestionSequence={this.props.visibleQuestionSequence}
         allResponsesValid={this.props.allResponsesValid}
         setQuestionSequence={this.props.setQuestionSequence}
+        setNextQuestion={this.props.setNextQuestion}
         setResponse={this.props.setResponse}
         submitSurvey={this.props.submitSurvey}
       />
