@@ -11,6 +11,11 @@ class ResponsesController < ApplicationController
     render json: {}, status: 500
   end
 
+  def index
+    survey_id = params[:survey_id].to_i
+    render json: Response.aggregate_by_question(survey_id)
+  end
+
   private
 
   def responses

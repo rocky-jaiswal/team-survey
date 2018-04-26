@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Dispatch, RootStateType, SurveyType } from '../../constants/types';
 
 import Layout from '../../components/Layout';
+import ResponseList from './ResponseList';
 import {
   fetchUserProfile,
   logout,
@@ -75,14 +76,27 @@ export class AllResponses extends React.Component<Props & DispatchProps> {
         <div className="admin-page">
           <h2>Welcome, Admin</h2>
           <Link to="/survey">Back to latest survey</Link>
-          <div>
-            <h3>Please select the survey to view responses:</h3>
-            <select name="select-response-for-survey">
-              {this.props.allSurveys.map((survey) => (
-                <option value={survey.id}>{survey.title}</option>
-              ))}
-            </select>
-            <h3>Responses:</h3>
+          <hr />
+          <div className="response-survey-selection">
+            <p>Please select the survey to view responses:</p>
+            <div className="survey-selection">
+              <select name="select-response-for-survey">
+                {this.props.allSurveys.map((survey) => (
+                  <option key={survey.id} value={survey.id}>{survey.title}</option>
+                ))}
+              </select>
+              <button className="btn btn-success" onClick={() => this.props.getAllResponses()}>Get responses</button>
+            </div>
+          </div>
+          <hr />
+          <div className="survey-responses">
+            { // tslint:disable-next-line:no-any
+              this.props.allResponses.map((response: any) => (
+                <div key={response.id}>
+                  <h5>{response.question}</h5>
+                  <ResponseList responses={response.responses} />
+                </div>
+            ))}
           </div>
         </div>
       </Layout>

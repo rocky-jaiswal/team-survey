@@ -52,7 +52,7 @@ const AppAPI = {
 
   async fetchAllResponses(surveyId: number) {
     return AppAPI.init()
-      .get(`${Config.env.baseURL}/survey/${surveyId}/responses`);
+      .get(`${Config.env.baseURL}/surveys/${surveyId}/responses`);
   }
 
 };

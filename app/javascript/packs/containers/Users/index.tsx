@@ -69,6 +69,7 @@ export class Users extends React.Component<Props & DispatchProps> {
         <div className="admin-page">
           <h2>Welcome, Admin</h2>
           <Link to="/survey">Back to latest survey</Link>
+          <hr />
           <div className="admin-all-user">
             <table>
               <thead>
