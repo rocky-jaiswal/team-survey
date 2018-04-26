@@ -19,7 +19,18 @@
     color: $gray-700;
     font-style: italic;
     margin: 0 0 5px 0;
-    padding: 20px 20px 0 20px;
+    padding: 2 * $vspace;
+
+    .progress {
+      width: 100%;
+      height: $vspace;
+      border: 1px solid $gray-400;
+    }
+
+    .progress-bar {
+      background-color: $orange;
+      height: 8px;
+    }
   }
 
   .navigation {
@@ -83,6 +94,13 @@
   .text-choice-question-wrapper {
     textarea {
       border: 1px solid $orange;
+    }
+  }
+
+  .message-wrapper {
+    h3 {
+      color: $brown;
+      margin-bottom: 2 * $vspace;
     }
   }
 

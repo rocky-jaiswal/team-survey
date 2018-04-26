@@ -5,7 +5,8 @@ interface Question {
   sequence: number;
   title: string;
   subtitle?: string;
-  type: 'MULTI' | 'RADIO' | 'RANGE' | 'TEXT';
+  message?: string;
+  type: 'MULTI' | 'RADIO' | 'RANGE' | 'TEXT' | 'MESSAGE';
   options: string[];
   responseRequired: boolean;
 }

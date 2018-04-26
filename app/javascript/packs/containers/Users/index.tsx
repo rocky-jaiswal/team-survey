@@ -85,7 +85,11 @@ export class Users extends React.Component<Props & DispatchProps> {
                     <td>{user.id}</td>
                     <td>{user.email}</td>
                     <td>{user.admin ? 'Yes' : 'No'}</td>
-                    <td><button className="btn btn-warning">Block</button></td>
+                    <td>
+                      <button className="btn btn-warning" onClick={() => alert('Not implemented yet!')}>
+                        Block
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>

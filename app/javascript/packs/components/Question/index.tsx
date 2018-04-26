@@ -5,6 +5,7 @@ import MultipleChoice from './MultipleChoice';
 import SingleChoice from './SingleChoice';
 import RangeChoice from './RangeChoice';
 import FreeText from './FreeText';
+import Message from './Message';
 
 interface Props {
   question: QuestionType;
@@ -17,6 +18,13 @@ interface Props {
 
 const Question = (props: Props) => {
   const renderAppropriateQuestion = (question: QuestionType) => {
+    if (question.type === 'MESSAGE') {
+      return (
+        <Message
+          question={question}
+        />
+      );
+    }
     if (question.type === 'MULTI') {
       return (
         <MultipleChoice

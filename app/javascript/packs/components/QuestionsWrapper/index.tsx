@@ -3,6 +3,7 @@ import * as React from 'react';
 import { QuestionType, ResponseType } from '../../constants/types';
 import Question from '../Question';
 import Navigation from './Navigation';
+import ProgressBar from './ProgressBar';
 
 interface Props {
   questions: QuestionType[];
@@ -29,9 +30,7 @@ const QuestionsWrapper = (props: Props) => {
 
   return (
     <div className="questions-wrapper">
-      <div className="question-tracker">
-        {`Question ${props.visibleQuestionSequence} / ${props.questions.length}`}
-      </div>
+      <ProgressBar visibleQuestionSequence={props.visibleQuestionSequence} questionsLength={props.questions.length} />
       {props.questions.map((question) =>
         <Question
           key={question.id}
