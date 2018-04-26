@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Header from '../Header';
-import Footer from '../Footer';
+// import Footer from '../Footer';
 
 interface Props {
   needsLoggedInUser?: boolean;
@@ -61,7 +61,6 @@ class Layout extends React.Component<Props> {
         <div id="page">
           {React.Children.toArray(this.props.children)}
         </div>
-        <Footer />
       </div>
     );
   }

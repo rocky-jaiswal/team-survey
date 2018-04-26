@@ -3,7 +3,7 @@
     - id: 1
       sequence: 1
       title: Heartbeat - Berlin
-      message: Happy Thursday! We hope you've had a good week. Thanks for taking the time to fill out your weekly Heartbeat. It'll only take 3 minutes.
+      message: Happy Thursday! We hope you've had a good week. Thanks for taking the time to fill out your weekly heartbeat. It'll only take 3 minutes.
       subtitle: We want to make your working life more manageable, so please answer honestly. All answers are anonymous by default and confidential.
       type: MESSAGE
       responseRequired: false
