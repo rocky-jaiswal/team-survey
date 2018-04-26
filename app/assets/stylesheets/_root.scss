@@ -1,3 +1,15 @@
-.login-form label {
-  width: 100%;
+@import '_variables';
+
+.login-form {
+  label {
+    width: 100%;
+  }
+
+  input {
+    margin-top: $vspace;
+  }
+
+  .form-group {
+    margin-bottom: 2 * $vspace;
+  }
 }

@@ -1,3 +1,3 @@
 export default {
-  'app.welcome': 'Welcome'
+  'app.welcome': 'Welcome to Team Heartbeat'
 };

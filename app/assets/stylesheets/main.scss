@@ -1,9 +1,4 @@
 @import '_variables';
-@import '_bootstrap';
-@import '_buttons';
-@import '_root';
-@import '_survey';
-@import '_admin';
 
 body {
   margin: 0;
@@ -67,10 +62,6 @@ h1, h2, h3, h4, h5 {
 #footer {
   height: 2%;
   background-color: $gray-300;
-}
-
-button.btn {
-  border-radius: 0px;
 }
 
 .hidden {

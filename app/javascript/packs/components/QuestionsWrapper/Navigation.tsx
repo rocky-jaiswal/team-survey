@@ -14,7 +14,7 @@ interface Props {
 
 const Navigation = (props: Props) => {
   const prevQuestion = () => {
-    if (props.hasValidResponse() && props.visibleQuestionSequence !== 1) {
+    if (props.visibleQuestionSequence !== 1) {
       props.setQuestionSequence(props.visibleQuestionSequence - 1);
     }
   };

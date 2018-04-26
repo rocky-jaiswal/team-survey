@@ -25,7 +25,7 @@ const LoginForm: React.SFC<Props> = (props: Props) => {
           />
         </label>
       </div>
-      <button type="submit" className="btn btn-primary">Submit</button>
+      <button type="submit" className="btnx orange">Submit</button>
     </form>
   );
 };

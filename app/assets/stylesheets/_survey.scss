@@ -16,9 +16,9 @@
   }
 
   .question-tracker {
-    margin: 0 5px 5px 0;
     color: $gray-700;
     font-style: italic;
+    margin: 0 0 5px 0;
     padding: 20px 20px 0 20px;
   }
 
@@ -37,9 +37,10 @@
 .question-wrapper {
   display: flex;
   flex-direction: column;
-  color: $gray-650;
+  justify-content: center;
   width: 100%;
-  min-height: 350px;
+  color: $gray-650;
+  min-height: 440px;
   padding: 0 20px 20px 20px;
 
   h1, h2, h3, h4, h5 {

@@ -63,7 +63,7 @@ const Question = (props: Props) => {
     >
       <h2>{`${props.question.title}${props.question.responseRequired ? '*' : ''}`}</h2>
       {renderAppropriateQuestion(props.question)}
-      <h5>{props.question.subtitle}</h5>
+      <h5 className={props.question.subtitle ? '' : 'hidden'}>{props.question.subtitle}</h5>
     </div>
   );
 };
