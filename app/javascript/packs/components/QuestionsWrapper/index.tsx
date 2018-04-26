@@ -27,11 +27,11 @@ const QuestionsWrapper = (props: Props) => {
     return true;
   };
 
-
-
   return (
     <div className="questions-wrapper">
-      <div className="question-tracker">{`Question ${props.visibleQuestionSequence} / ${props.questions.length}`}</div>
+      <div className="question-tracker">
+        {`Question ${props.visibleQuestionSequence} / ${props.questions.length}`}
+      </div>
       {props.questions.map((question) =>
         <Question
           key={question.id}

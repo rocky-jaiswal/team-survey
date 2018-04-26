@@ -58,7 +58,7 @@ const Question = (props: Props) => {
   return (
     <div
       className={props.visibleQuestionSequence === props.question.sequence ?
-        'question-wrapper' :
+        'question-wrapper animated fadeIn' :
         'hidden'}
     >
       <h2>{`${props.question.title}${props.question.responseRequired ? '*' : ''}`}</h2>
