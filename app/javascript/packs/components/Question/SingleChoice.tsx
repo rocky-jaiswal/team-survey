@@ -43,6 +43,6 @@ const SingleChoice = (props: Props) => {
       </form>
     </div>
   );
-}
+};
 
 export default SingleChoice;
