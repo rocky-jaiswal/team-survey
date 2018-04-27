@@ -2,13 +2,9 @@
 
 ## To run dev -
 
-```docker run --name heartbeat-postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d -v postgres_data:/var/lib/postgresql/data postgres:10-alpine```
+```docker-compose up --build```
 
-```docker run -it --rm --link heartbeat-postgres:postgres postgres:10-alpine psql -h postgres -U postgres```
-
-```bin/webpack-dev-server```
-
-```bin/rails s```
+TODO: Add instructions for fresh installation and production setup.
 
 ## How it works -
 
