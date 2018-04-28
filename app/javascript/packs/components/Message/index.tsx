@@ -17,6 +17,6 @@ const Message = (props: Props) => {
       {getMessage(props.type)}
     </div>
   );
-}
+};
 
 export default Message;

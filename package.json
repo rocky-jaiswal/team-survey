@@ -1,6 +1,9 @@
 {
   "name": "heartbeat-app",
   "private": true,
+  "scripts": {
+    "lint": "npx tslint -c tslint.json 'app/javascript/packs/**/*.ts*'"
+  },
   "dependencies": {
     "@rails/webpacker": "3.4",
     "axios": "^0.17.1",
@@ -38,5 +41,20 @@
     "tslint-react": "^3.5.1",
     "typescript": "^2.8.1",
     "webpack-dev-server": "2.11.2"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{ts,tsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    }
   }
 }

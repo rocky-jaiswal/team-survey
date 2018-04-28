@@ -2,9 +2,20 @@
 
 ## To run dev -
 
-```docker-compose up --build```
+Docker based setup -
 
-TODO: Add instructions for fresh installation and production setup.
+```docker-compose up --build```
+```docker-compose exec main-app bin/rails db:migrate```
+```docker-compose exec main-app bin/rails db:seed```
+
+Post first build the servers can just be run by -
+
+```docker-compose up```
+
+Install packages also locally for IDE support -
+
+```bundle install```
+```yarn install```
 
 ## How it works -
 

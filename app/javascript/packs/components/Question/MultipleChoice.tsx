@@ -42,6 +42,6 @@ const MultipleChoice = (props: Props) => {
       </form>
     </div>
   );
-}
+};
 
 export default MultipleChoice;

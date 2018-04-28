@@ -21,6 +21,12 @@ services:
       - "3035:3035"
     volumes:
       - ./app:/myapp/app:z
+      - ./bin:/myapp/bin:z
+      - ./config:/myapp/config:z
+      - ./db:/myapp/db:z
+      - ./lib:/myapp/lib:z
+      - ./public:/myapp/public:z
+      - ./spec:/myapp/spec:z
     environment:
       RAILS_MASTER_KEY: "${RAILS_MASTER_KEY}"
       RAILS_ENV: development
