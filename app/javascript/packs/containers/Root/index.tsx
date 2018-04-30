@@ -8,6 +8,7 @@ import { generateToken, setUserEmail, GENERATE_TOKEN_FAILED } from '../../redux/
 
 import Layout from '../../components/Layout';
 import LoginForm from '../../components/LoginForm';
+import LoadingSpinner from '../../components/LoadingSpinner';
 
 interface Props {
   loading: boolean;
@@ -63,6 +64,7 @@ export class Root extends React.Component<Props & DispatchProps> {
       >
         <div>
           <h1><FormattedMessage id="app.welcome" /></h1>
+          <LoadingSpinner visible={true} />
           <LoginForm
             handleEmailChange={this.props.setUserEmail}
             handleSubmit={this.props.generateToken}

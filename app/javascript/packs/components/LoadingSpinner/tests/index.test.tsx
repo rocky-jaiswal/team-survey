@@ -7,7 +7,7 @@ describe('<LoadingSpinner />', () => {
 
   test('is working', () => {
     const wrapper = shallow(
-      <LoadingSpinner/>
+      <LoadingSpinner visible={true} />
     );
     expect(wrapper).toBeTruthy();
   });

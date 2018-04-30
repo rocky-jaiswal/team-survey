@@ -15,7 +15,7 @@ interface Props {
   logout?(): {};
 }
 
-class Layout extends React.Component<Props> {
+class Layout extends React.PureComponent<Props> {
 
   _checkLogin(props: Props) {
     if (props.needsLoggedInUser && !sessionStorage.getItem('jwt')) {
