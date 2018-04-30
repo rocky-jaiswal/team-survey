@@ -5,7 +5,9 @@
 Docker based setup -
 
 ```docker-compose up --build```
+
 ```docker-compose exec main-app bin/rails db:migrate```
+
 ```docker-compose exec main-app bin/rails db:seed```
 
 Post first build the servers can just be run by -
