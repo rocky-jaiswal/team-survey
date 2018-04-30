@@ -27,7 +27,7 @@ class LoadingSpinner extends React.Component<Props> {
 
   updateState() {
     this.setState({
-      x: this.state.x <= 8 ? this.state.x + 1 : 1
+      x: this.state.x <= 6 ? this.state.x + 1 : 1
     });
 
     d3.select(this.svgRef.current)
