@@ -19,7 +19,7 @@ class BarChart extends React.Component<Props> {
     const dataset: { name: string, value: number }[] = [
       { name: 'Option1', value: 10 },
       { name: 'Option2', value: 15 },
-      { name: 'Option3', value: 20 },
+      { name: 'Option3', value: 50 },
       { name: 'Option4', value: 30 },
       { name: 'Option5', value: 15 },
     ];
@@ -35,7 +35,7 @@ class BarChart extends React.Component<Props> {
     const xScale = d3
       .scaleBand()
       .domain(dataset.map(d => d.name))
-      .rangeRound([0, svgWidth])
+      .rangeRound([0, svgWidth - barPadding])
       .padding(barPadding / svgWidth);
 
     const yScale = d3
