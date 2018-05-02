@@ -23,7 +23,7 @@ const RangeChoice = (props: Props) => {
                 e.preventDefault();
                 props.setResponse({
                   questionId: props.question.id,
-                  selection: [option],
+                  selection: [`${option}`],
                   added: true
                 });
               }}

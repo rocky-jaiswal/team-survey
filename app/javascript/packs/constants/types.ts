@@ -21,6 +21,13 @@ interface Response {
 
 export type ResponseType = Response;
 
+interface AggregateResponseData {
+  option: string;
+  count: number;
+}
+
+export type AggregateResponseDataType = AggregateResponseData;
+
 interface User {
   id?: number;
   email: string;

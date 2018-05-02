@@ -21,8 +21,8 @@ class Response < ApplicationRecord
   def self.aggregate_by_question(survey_id)
     responses = Response.where(survey_id: survey_id)
     aggregates = responses.reduce({}) do |agg, resp|
-      if !agg[resp.question_id]
-        agg[resp.question_id] = []
+      if agg[resp.question_id].nil?
+        agg[resp.question_id] = [resp.response]
       else
         agg[resp.question_id] << resp.response
       end
@@ -30,10 +30,16 @@ class Response < ApplicationRecord
     end
     aggregates.keys.map do |ak|
       question = QUESTIONS['questions'].find{|q| q['id'] == ak}
+      group = aggregates[ak].group_by{|e| e}
       {
         id: question['id'],
         question: question['title'],
-        responses: aggregates[ak]
+        responses: group.keys.map do |k|
+          resp = {}
+          resp[:option] = k
+          resp[:count] = group[k].count
+          resp
+        end
       }
     end
   end

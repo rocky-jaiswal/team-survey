@@ -1,8 +1,10 @@
 import * as React from 'react';
 import * as d3 from 'd3';
+import { AggregateResponseDataType } from '../../constants/types';
 
 interface Props {
-  visible?: boolean;
+  hide?: boolean;
+  responseData: AggregateResponseDataType[];
 }
 
 class BarChart extends React.Component<Props> {
@@ -16,15 +18,9 @@ class BarChart extends React.Component<Props> {
   }
 
   componentDidMount() {
-    const dataset: { name: string, value: number }[] = [
-      { name: 'Option1', value: 10 },
-      { name: 'Option2', value: 15 },
-      { name: 'Option3', value: 50 },
-      { name: 'Option4', value: 30 },
-      { name: 'Option5', value: 15 },
-    ];
+    const dataset = this.props.responseData;
 
-    const svgWidth = 800, svgHeight = 400, barPadding = 5, margin = 20;
+    const svgWidth = 600, svgHeight = 400, barPadding = 5, margin = 20;
     const barWidth = (svgWidth / dataset.length);
 
     const svg = d3
@@ -34,13 +30,13 @@ class BarChart extends React.Component<Props> {
 
     const xScale = d3
       .scaleBand()
-      .domain(dataset.map(d => d.name))
+      .domain(dataset.map(d => d.option))
       .rangeRound([0, svgWidth - barPadding])
       .padding(barPadding / svgWidth);
 
     const yScale = d3
       .scaleLinear()
-      .domain([0, d3.max(dataset.map(d => d.value)) || 0])
+      .domain([0, d3.max(dataset.map(d => d.count)) || 0])
       .range([0, svgHeight - margin]);
 
     svg
@@ -54,12 +50,12 @@ class BarChart extends React.Component<Props> {
       .data(dataset)
       .enter()
       .append('rect')
-      .attr('fill', (d) => color(d.name))
+      .attr('fill', (d) => color(d.option))
       .attr('y', (d) => {
-          return svgHeight - yScale(d.value) - margin;
+          return svgHeight - yScale(d.count) - margin;
       })
       .attr('height', (d) => {
-        return yScale(d.value);
+        return yScale(d.count);
       })
       .attr('width', barWidth - barPadding)
       .transition()
@@ -74,7 +70,7 @@ class BarChart extends React.Component<Props> {
       .enter()
       .append('text')
       .text((d) => {
-        return `${d.value}`;
+        return `${d.count}`;
       })
       .attr('y', (d) => {
         return svgHeight - margin;
@@ -86,7 +82,7 @@ class BarChart extends React.Component<Props> {
   }
 
   render() {
-    if (!this.props.visible) {
+    if (this.props.hide) {
       return <span />;
     }
     return (

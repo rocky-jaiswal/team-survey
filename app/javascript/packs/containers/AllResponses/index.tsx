@@ -6,13 +6,13 @@ import { Link } from 'react-router-dom';
 import { Dispatch, RootStateType, SurveyType } from '../../constants/types';
 
 import Layout from '../../components/Layout';
-import ResponseList from './ResponseList';
 import {
   fetchUserProfile,
   logout,
   getAllSurveys,
   getAllResponses
 } from '../../redux/app/actions';
+import BarChart from '../../components/BarChart';
 
 interface Props {
   loading: boolean;
@@ -94,7 +94,7 @@ export class AllResponses extends React.Component<Props & DispatchProps> {
               this.props.allResponses.map((response: any) => (
                 <div key={response.id}>
                   <h5>{response.question}</h5>
-                  <ResponseList responses={response.responses} />
+                  <BarChart responseData={response.responses} />
                 </div>
             ))}
           </div>
