@@ -63,7 +63,7 @@ class LoadingSpinner extends React.Component<Props> {
       .attr('transform', 'translate(20, 20)')
       .append('path')
       .attr('d', arcBase)
-      .attr('fill', '#ccc');
+      .attr('fill', '#EEE');
 
     svg
       .append('g')
