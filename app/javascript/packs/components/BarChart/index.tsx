@@ -51,12 +51,8 @@ class BarChart extends React.Component<Props> {
       .enter()
       .append('rect')
       .attr('fill', (d) => color(d.option))
-      .attr('y', (d) => {
-          return svgHeight - yScale(d.count) - margin;
-      })
-      .attr('height', (d) => {
-        return yScale(d.count);
-      })
+      .attr('y', (d) => svgHeight - yScale(d.count) - margin)
+      .attr('height', (d) => yScale(d.count))
       .attr('width', barWidth - barPadding)
       .transition()
       .duration(500)
@@ -69,16 +65,10 @@ class BarChart extends React.Component<Props> {
       .data(dataset)
       .enter()
       .append('text')
-      .text((d) => {
-        return `${d.count}`;
-      })
-      .attr('y', (d) => {
-        return svgHeight - margin;
-      })
-      .attr('x', (d, i) => {
-          return barWidth * i + (barWidth / 2.3);
-      })
-      .attr('fill', '#FFF');
+      .text((d) => `${d.count}`)
+      .attr('y', (d) => svgHeight - margin)
+      .attr('x', (d, i) => barWidth * i + (barWidth / 2.3))
+      .attr('stroke', '#000');
   }
 
   render() {

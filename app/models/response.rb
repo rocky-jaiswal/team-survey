@@ -28,18 +28,23 @@ class Response < ApplicationRecord
       end
       agg
     end
+    puts aggregates.inspect
     aggregates.keys.map do |ak|
       question = QUESTIONS['questions'].find{|q| q['id'] == ak}
       group = aggregates[ak].group_by{|e| e}
       {
         id: question['id'],
         question: question['title'],
-        responses: group.keys.map do |k|
-          resp = {}
-          resp[:option] = k
-          resp[:count] = group[k].count
-          resp
-        end
+        questionType: question['type'],
+        responses: question['type'] != 'TEXT' ?
+          question['options'].map do |option|
+            resp = {}
+            resp[:option] = option
+            resp[:count] = (group[option.to_s] || []).count
+            resp
+          end
+          :
+          aggregates[question['id']]
       }
     end
   end

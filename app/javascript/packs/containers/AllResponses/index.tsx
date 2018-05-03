@@ -13,6 +13,7 @@ import {
   getAllResponses
 } from '../../redux/app/actions';
 import BarChart from '../../components/BarChart';
+import ResponseList from './ResponseList';
 
 interface Props {
   loading: boolean;
@@ -94,7 +95,11 @@ export class AllResponses extends React.Component<Props & DispatchProps> {
               this.props.allResponses.map((response: any) => (
                 <div key={response.id}>
                   <h5>{response.question}</h5>
-                  <BarChart responseData={response.responses} />
+                  { response.questionType !== 'TEXT' ?
+                    <BarChart responseData={response.responses} />
+                  :
+                    <ResponseList responses={response.responses} />
+                  }
                 </div>
             ))}
           </div>
