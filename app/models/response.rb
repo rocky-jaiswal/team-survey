@@ -28,7 +28,6 @@ class Response < ApplicationRecord
       end
       agg
     end
-    puts aggregates.inspect
     aggregates.keys.map do |ak|
       question = QUESTIONS['questions'].find{|q| q['id'] == ak}
       group = aggregates[ak].group_by{|e| e}

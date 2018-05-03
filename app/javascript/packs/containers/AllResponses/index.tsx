@@ -2,6 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { Link } from 'react-router-dom';
+import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 
 import { Dispatch, RootStateType, SurveyType } from '../../constants/types';
 
@@ -12,7 +13,6 @@ import {
   getAllSurveys,
   getAllResponses
 } from '../../redux/app/actions';
-import BarChart from '../../components/BarChart';
 import ResponseList from './ResponseList';
 
 interface Props {
@@ -94,9 +94,22 @@ export class AllResponses extends React.Component<Props & DispatchProps> {
             { // tslint:disable-next-line:no-any
               this.props.allResponses.map((response: any) => (
                 <div key={response.id}>
-                  <h5>{response.question}</h5>
+                  <h4>{response.question}</h4>
                   { response.questionType !== 'TEXT' ?
-                    <BarChart responseData={response.responses} />
+                    <ResponsiveContainer width="100%" height={350}>
+                      <BarChart
+                        width={600}
+                        height={300}
+                        data={response.responses}
+                        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+                      >
+                        <CartesianGrid strokeDasharray="3 3"/>
+                        <XAxis dataKey="option"/>
+                        <YAxis allowDecimals={false} />
+                        <Tooltip/>
+                        <Bar dataKey="count" fill="#F76560" />
+                      </BarChart>
+                    </ResponsiveContainer>
                   :
                     <ResponseList responses={response.responses} />
                   }
