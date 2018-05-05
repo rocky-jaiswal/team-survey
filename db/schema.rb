@@ -24,11 +24,12 @@ ActiveRecord::Schema.define(version: 2018_04_23_154202) do
   end
 
   create_table "surveys", force: :cascade do |t|
-    t.text "title"
+    t.text "title", null: false
     t.boolean "active"
     t.bigint "respondents", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_surveys_on_title", unique: true
   end
 
   create_table "users", force: :cascade do |t|

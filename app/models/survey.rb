@@ -1,4 +1,5 @@
 class Survey < ApplicationRecord
+  validates :title, presence: true, uniqueness: true
 
   def self.add_respondent(id, user_id)
     survey = Survey.find(id)

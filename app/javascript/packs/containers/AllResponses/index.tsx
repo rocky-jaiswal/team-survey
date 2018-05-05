@@ -86,7 +86,7 @@ export class AllResponses extends React.Component<Props & DispatchProps> {
                   <option key={survey.id} value={survey.id}>{survey.title}</option>
                 ))}
               </select>
-              <button className="btn btn-success" onClick={() => this.props.getAllResponses()}>Get responses</button>
+              <button className="btnx green" onClick={() => this.props.getAllResponses()}>Get responses</button>
             </div>
           </div>
           <hr />
