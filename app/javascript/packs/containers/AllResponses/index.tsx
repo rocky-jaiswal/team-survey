@@ -11,7 +11,8 @@ import {
   fetchUserProfile,
   logout,
   getAllSurveys,
-  getAllResponses
+  getAllResponses,
+  setAdminSurveyForResponses
 } from '../../redux/app/actions';
 import ResponseList from './ResponseList';
 
@@ -28,6 +29,7 @@ interface Props {
 interface DispatchProps {
   changeRoute(route: string): {};
   fetchUserProfile(): {};
+  setAdminSurveyForResponses(payload: string): {};
   getAllSurveys(): {};
   getAllResponses(): {};
   logout(): {};
@@ -50,6 +52,7 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => {
     fetchUserProfile: () => dispatch(fetchUserProfile()),
     getAllResponses: () => dispatch(getAllResponses()),
     getAllSurveys: () => dispatch(getAllSurveys()),
+    setAdminSurveyForResponses: (payload: string) => dispatch(setAdminSurveyForResponses(payload)),
     logout: () => dispatch(logout())
   };
 };
@@ -81,9 +84,11 @@ export class AllResponses extends React.Component<Props & DispatchProps> {
           <div className="response-survey-selection">
             <p>Please select the survey to view responses:</p>
             <div className="survey-selection">
-              <select name="select-response-for-survey">
+              <select name="select-response-for-survey" onChange={(e) => this.props.setAdminSurveyForResponses(e.target.value)}>
                 {this.props.allSurveys.map((survey) => (
-                  <option key={survey.id} value={survey.id}>{survey.title}</option>
+                  <option key={survey.id} value={survey.id}>
+                    {survey.title}
+                  </option>
                 ))}
               </select>
               <button className="btnx green" onClick={() => this.props.getAllResponses()}>Get responses</button>

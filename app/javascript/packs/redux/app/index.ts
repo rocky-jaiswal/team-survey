@@ -30,7 +30,8 @@ import {
   GET_ALL_RESPONSES_INPROGRESS,
   GET_ALL_RESPONSES_FAILED,
   GET_ALL_RESPONSES_SUCCESS,
-  SET_NEXT_QUESTION
+  SET_NEXT_QUESTION,
+  SET_ADMIN_SURVEY_FOR_RESPONSE
 } from './actions';
 import { setResponse, checkValidity } from './validateAndSetResponse';
 
@@ -209,6 +210,10 @@ const appReducer = (state = initialState, action: ActionType<any>): AppStateType
         .set('loading', false)
         .set('error', state.error === GET_ALL_RESPONSES_FAILED ? null : state.error)
         .setIn(['admin', 'allSubmittedResponses'], action.payload);
+
+    case SET_ADMIN_SURVEY_FOR_RESPONSE:
+      return state
+        .setIn(['admin', 'selectedSurvey'], parseInt(action.payload, 10));
 
     case LOGOUT:
       sessionStorage.clear();

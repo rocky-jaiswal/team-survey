@@ -46,6 +46,8 @@ export const GET_ALL_RESPONSES_INPROGRESS = 'app/GET_ALL_RESPONSES_INPROGRESS';
 export const GET_ALL_RESPONSES_SUCCESS    = 'app/GET_ALL_RESPONSES_SUCCESS';
 export const GET_ALL_RESPONSES_FAILED     = 'app/GET_ALL_RESPONSES_FAILED';
 
+export const SET_ADMIN_SURVEY_FOR_RESPONSE = 'app/SET_ADMIN_SURVEY_FOR_RESPONSE';
+
 export const LOGOUT = 'app/LOGOUT';
 
 export const setUserEmail = (payload: string) => {
@@ -280,5 +282,12 @@ export const getAllResponsesSuccess = (payload: any) => {
 export const getAllResponsesFailed = () => {
   return {
     type: GET_ALL_RESPONSES_FAILED
+  };
+};
+
+export const setAdminSurveyForResponses = (payload: string) => {
+  return {
+    payload,
+    type: SET_ADMIN_SURVEY_FOR_RESPONSE
   };
 };
